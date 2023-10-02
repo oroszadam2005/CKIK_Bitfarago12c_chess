@@ -16,10 +16,17 @@ window.addEventListener('load', function(){
     apply(0.6, '--s');
   }, 1000);});
 function d3(){
+  document.getElementById('DView').value = "2D";
+  document.getElementById('DView').setAttribute("onclick","d2()");
   setTimeout(function(){
     apply(45, '--x', 'deg');
     apply(0, '--y', 'deg');
-    apply(-30, '--z', 'deg');
+    if(document.getElementById('ViewSide').value == "bal"){
+      jobb();
+    }
+    else{
+      bal();
+    }
     apply(0, '--tx', 'px');
     apply(0, '--ty', 'px');
     apply(215, '--tz', 'px');
@@ -28,6 +35,8 @@ function d3(){
   });
 }
 function d2(){
+  document.getElementById('DView').value = "3D";
+  document.getElementById('DView').setAttribute("onclick","d3()");
   apply(0, '--x', 'deg');
   apply(0, '--y', 'deg');
   apply(0, '--z', 'deg');
@@ -38,8 +47,12 @@ function d2(){
   apply(0.6, '--s');
 }
 function jobb(){
+  document.getElementById('ViewSide').value = "bal";
+  document.getElementById('ViewSide').setAttribute("onclick","bal()");
   apply(30, '--z', 'deg');
 }
 function bal(){
+  document.getElementById('ViewSide').value = "jobb";
+  document.getElementById('ViewSide').setAttribute("onclick","jobb()");
   apply(-30, '--z', 'deg');
 }

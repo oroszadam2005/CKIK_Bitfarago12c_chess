@@ -1,5 +1,5 @@
 html, body{
-background-color:white;
+    background-color:gray;
 }
 .main{
 position:absolute;left:0;top:0;
@@ -176,4 +176,19 @@ transform-style:preserve-3d;
 transition:background-color ease 1s;
 --A-color:#ffffff;
 --B-color:#ffffff;
+}
+
+.Buttons{
+    margin: .05vw 1vw;
+    border: 2px solid white;
+    background-color: rgba(51, 51, 51, 0.8);
+    width: 6vw;
+    color: white;
+    font-size: 1.2vw;
+    height: 3vw;
+    cursor: pointer;
+    border-radius: .6vw;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: .6s;
 }
