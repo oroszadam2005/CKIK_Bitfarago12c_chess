@@ -6,19 +6,22 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<input type="button" onclick="bal()" id="ViewSide" class="Buttons" value="bal">
+	<input type="button" onclick="bal()" id="ViewSide" class="Buttons" value="bal" disabled>
 	<input type="button" onclick="d3()" id="DView" class="Buttons" value="3D">
-<div class="main">
-	<div class="_3d chess">
-		<div class="elements">
+	<DIV class="uniform">
+		<DIV class="object3d chess-defaults">
+		<div class="reusable-rect main-stage">
 			<div class="sides side1"></div>
 			<div class="sides side2"></div>
-			<div class="board">
-				<!--<div class="grid" style="--v:0;--h:4;"></div>-->
+			<div class="main-elements">
+				<DIV class="board" id="board">
+
+				</DIV>
 			</div>
 		</div>
-	</div>
-</div>
+		</DIV>
+		</DIV>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
