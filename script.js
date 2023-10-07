@@ -1,12 +1,19 @@
+function apply(v1){
+  var prefix = ["--x","--y","--z","--tx","--ty","--tz","--p","--s"]
+  var prefix2 = ["deg","deg","deg","px","px","px","px",""]
+  for (let index = 0; index < 8; index++) {
+    document.documentElement.style.setProperty(prefix[index], v1[index]+prefix2[index]);
+  }
+}
 var piece =
 [
 {name:"QUEEN",
 color:"BLACK",
-code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="piece-head"><div class="reusable-trapezoid"><div class="trapesides trapeside1"></div><div class="trapesides trapeside2"></div><div class="trapesides trapeside3"></div><div class="trapesides trapeside4"></div><div class="trapesides trapeside5"></div></div></div><div class="reusable-rect piece-diamond"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-hood"><div class="sides side1"></div> <div class="sides side2"></div></div>'},
+code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="piece-head"><div class="reusable-trapezoid"><div class="trapesides trapeside1"></div><div class="trapesides trapeside2"></div><div class="trapesides trapeside3"></div><div class="trapesides trapeside4"></div><div class="trapesides trapeside5"></div></div></div><div class="reusable-rect piece-hood"><div class="sides side1"></div> <div class="sides side2"></div></div>'},
 
 {name:"KING",
 color:"BLACK",
-code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div></div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="piece-head"><div class="reusable-trapezoid"><div class="trapesides trapeside1"></div><div class="trapesides trapeside2"></div><div class="trapesides trapeside3"></div><div class="trapesides trapeside4"></div><div class="trapesides trapeside5"></div></div></div><div class="reusable-rect piece-diamond"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-hood"> <div class="sides side1"></div> <div class="sides side2"></div> </div>'},
+code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div></div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="piece-head"><div class="reusable-trapezoid"><div class="trapesides trapeside1"></div><div class="trapesides trapeside2"></div><div class="trapesides trapeside3"></div><div class="trapesides trapeside4"></div><div class="trapesides trapeside5"></div></div></div><div class="reusable-rect piece-hood"> <div class="sides side1"></div> <div class="sides side2"></div> </div>'},
 
 {name:"BISHOP",
 color:"BLACK",
@@ -28,11 +35,11 @@ var piece2 =
 [
 {name:"QUEEN",
 color:"WHITE",
-code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="piece-head"><div class="reusable-trapezoid"><div class="trapesides trapeside1"></div><div class="trapesides trapeside2"></div><div class="trapesides trapeside3"></div><div class="trapesides trapeside4"></div><div class="trapesides trapeside5"></div></div></div><div class="reusable-rect piece-diamond"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-hood"><div class="sides side1"></div> <div class="sides side2"></div></div>'},
+code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="piece-head"><div class="reusable-trapezoid"><div class="trapesides trapeside1"></div><div class="trapesides trapeside2"></div><div class="trapesides trapeside3"></div><div class="trapesides trapeside4"></div><div class="trapesides trapeside5"></div></div></div><div class="reusable-rect piece-hood"><div class="sides side1"></div> <div class="sides side2"></div></div>'},
 
 {name:"KING",
 color:"WHITE",
-code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div></div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="piece-head"><div class="reusable-trapezoid"><div class="trapesides trapeside1"></div><div class="trapesides trapeside2"></div><div class="trapesides trapeside3"></div><div class="trapesides trapeside4"></div><div class="trapesides trapeside5"></div></div></div><div class="reusable-rect piece-diamond"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-hood"> <div class="sides side1"></div> <div class="sides side2"></div> </div>'},
+code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div></div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="piece-head"><div class="reusable-trapezoid"><div class="trapesides trapeside1"></div><div class="trapesides trapeside2"></div><div class="trapesides trapeside3"></div><div class="trapesides trapeside4"></div><div class="trapesides trapeside5"></div></div></div><div class="reusable-rect piece-hood"> <div class="sides side1"></div> <div class="sides side2"></div> </div>'},
 
 {name:"BISHOP",
 color:"WHITE",
@@ -64,27 +71,6 @@ var table = [[piece[4],piece[3],piece[2],piece[1],piece[0],piece[2],piece[3],pie
 [piece2[4],piece2[3],piece2[2],piece2[1],piece2[0],piece2[2],piece2[3],piece2[4]]
 ];
 
-function General(){
-  var board = document.getElementById("board");
-  for (let i = 0; i < 12; i++) {
-    for (let j = 0; j < 8; j++) {
-      board.innerHTML+= `<div onclick="Click(this)" class="piece" id="${i}:${j}" style="--v:${i};--h:${j};"></div>`
-    }
-  }
-}
-General();
-function apply(v1){
-  var prefix = ["--x","--y","--z","--tx","--ty","--tz","--p","--s"]
-  var prefix2 = ["deg","deg","deg","px","px","px","px",""]
-  for (let index = 0; index < 8; index++) {
-    document.documentElement.style.setProperty(prefix[index], v1[index]+prefix2[index]);
-  }
-}
-window.addEventListener('load', function(){
-  setTimeout(function(){
-    apply([0,0,0,0,-150,0,3705,0.6]);
-  }, 1000);});
-
 function d3(){
   document.getElementById('ViewSide').disabled = false;
   document.getElementById('DView').value = "2D";
@@ -95,9 +81,7 @@ function d3(){
   else{
     bal();
   }
-  setTimeout(function(){
-    apply([45,0,0,0,0,215,3705,0.6]);
-  });
+  apply([45,0,0,0,0,215,3705,0.6]);
 }
 function d2(){
   document.getElementById('ViewSide').disabled = true;
@@ -118,4 +102,23 @@ function bal(){
 function Click(v){
   console.log(v);
 }
-
+function General(){
+  var board = document.getElementById("board");
+  for (let i = 0; i < 12; i++) {
+    for (let j = 0; j < 8; j++) {
+      board.innerHTML+= `<div onclick="Click(this)" class="piece" id="${i}:${j}" style="--v:${i};--h:${j};"></div>`;
+      if (table[i][j] != undefined) {        
+        var div = document.getElementById(i+":"+j);
+        div.innerHTML+=table[i][j].code;
+        if (table[i][j].color =="BLACK"){
+          div.classList.add("BLACK");
+        }
+        div.classList.add(table[i][j].name);
+      }
+    }
+  }
+}
+window.addEventListener('load', function(){
+  setTimeout(function(){apply([0,0,0,0,-150,0,3705,0.6])},1000)
+  setTimeout(function(){General()},3000)
+});
