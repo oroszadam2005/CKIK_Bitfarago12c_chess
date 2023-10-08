@@ -1,5 +1,6 @@
-var nextstep = 0;
+var nextstep = 1;
 var nextstep_p = ["BLACK","WHITE"]
+var point = [0,0]
 function apply(v1){
   var prefix = ["--x","--y","--z","--tx","--ty","--tz","--p","--s"]
   var prefix2 = ["deg","deg","deg","px","px","px","px",""]
@@ -9,59 +10,60 @@ function apply(v1){
 }
 var piece =
 [
-{name:"QUEEN",
+{name:"QUEEN",point:5,
 color:"BLACK",
 code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="piece-head"></div><div class="reusable-rect piece-hood"><div class="sides side1"></div> <div class="sides side2"></div></div>'},
 
-{name:"KING",
+
+{name:"KING",point:2,
 color:"BLACK",
 code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div></div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="piece-head"></div><div class="reusable-rect piece-hood"> <div class="sides side1"></div> <div class="sides side2"></div> </div>'},
 
-{name:"BISHOP",
+{name:"BISHOP",point:2,
 color:"BLACK",
 code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-head"> <div class="sides side1"></div><div class="sides side2"></div> </div>'},
 
-{name:"HORSE",
+{name:"HORSE",point:2,
 color:"BLACK",
 code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-tilt1"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-tilt2"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-tilt3"> <div class="sides side1"></div><div class="sides side2"></div> </div>'},
 
-{name:"ROOK",
+{name:"ROOK",point:3,
 color:"BLACK",
 code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-head"><div class="sides side1"></div><div class="sides side2"></div><div class="reusable-rect piece-head-left"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-head-right"> <div class="sides side1"></div><div class="sides side2"></div> </div></div><div class="reusable-rect piece-head-center"> <div class="sides side1"></div><div class="sides side2"></div> </div>'},
 
-{name:"PAWN",
+{name:"PAWN",point:1,
 color:"BLACK",
 code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-head"> <div class="sides side1"></div><div class="sides side2"></div> </div>'}
 ]
 var piece2 =
 [
-{name:"QUEEN",
+{name:"QUEEN",point:5,
 color:"WHITE",
 code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="piece-head"></div><div class="reusable-rect piece-hood"><div class="sides side1"></div> <div class="sides side2"></div></div>'},
 
-{name:"KING",
+{name:"KING",point:2,
 color:"WHITE",
 code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div></div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="piece-head"></div><div class="reusable-rect piece-hood"> <div class="sides side1"></div> <div class="sides side2"></div> </div>'},
 
-{name:"BISHOP",
+{name:"BISHOP",point:2,
 color:"WHITE",
 code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-head"> <div class="sides side1"></div><div class="sides side2"></div> </div>'},
 
-{name:"HORSE",
+{name:"HORSE",point:2,
 color:"WHITE",
 code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-tilt1"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-tilt2"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-tilt3"> <div class="sides side1"></div><div class="sides side2"></div> </div>'},
 
-{name:"ROOK",
+{name:"ROOK",point:3,
 color:"WHITE",
 code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-head"><div class="sides side1"></div><div class="sides side2"></div><div class="reusable-rect piece-head-left"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-head-right"> <div class="sides side1"></div><div class="sides side2"></div> </div></div><div class="reusable-rect piece-head-center"> <div class="sides side1"></div><div class="sides side2"></div> </div>'},
 
-{name:"PAWN",
+{name:"PAWN",point:1,
 color:"WHITE",
 code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-head"> <div class="sides side1"></div><div class="sides side2"></div> </div>'}
 ]
 var table = [[piece[4],piece[3],piece[2],piece[1],piece[0],piece[2],piece[3],piece[4]],
 [piece[5],piece[5],piece[5],piece[5],piece[5],piece[5],piece[5],piece[5]],
-[piece[5],,,,,,,piece2[5]],
+[,,,,,,,],
 [,,,,,,,],
 [,,,,,,,],
 [,,,,,,,],
@@ -112,15 +114,20 @@ function Click(){
     Possiblesteps();
   }else if(lasthover.classList.contains("possible")){
     Lepes();
+  }else if(lasthover.classList.contains("attack")){
+    var iy2 = lasthover.id.split(":");
+    point[nextstep]+=table[iy2[0]][iy2[1]].point;
+    Lepes();
   }
 }
 function Lepes(){
-  document.getElementById(lasthover.id).classList = selected.classList;
+  lasthover.classList = selected.classList;
   selected.classList = "piece";
-  document.getElementById(lasthover.id).classList.remove("selected");
+  selected.innerHTML = "";
+  lasthover.classList.remove("selected");
   var iy = selected.id.split(":")
   var iy2 = lasthover.id.split(":");
-  document.getElementById(lasthover.id).innerHTML = table[iy[0]][iy[1]].code;
+  lasthover.innerHTML = table[iy[0]][iy[1]].code;
   table[iy2[0]][iy2[1]] = table[iy[0]][iy[1]];
   table[iy[0]][iy[1]] = undefined;
   for (let i = 0; i < possibles.length; i++) {
@@ -132,6 +139,13 @@ function Lepes(){
   }else{
     nextstep = 0;
   }
+  if (iy2[0] == 11 || iy2[0] == 0) {
+    if(lasthover.classList.contains("forditva")){
+      lasthover.classList.remove("forditva");
+    }else{
+      lasthover.classList.add("forditva");
+    }
+  }
   selected = null;
   possibles = [];
 }
@@ -141,7 +155,6 @@ function Possiblesteps(){
     for (let i = 0; i < possibles.length; i++) {
       document.getElementById(possibles[i]).classList.remove("possible");
       document.getElementById(possibles[i]).classList.remove("attack");
-
     }
     possibles = new Array();
   }
@@ -149,12 +162,12 @@ function Possiblesteps(){
   var type = selected.classList[2];
   if (type == "PAWN") {
     for (let i = 0; i < 3; i++) {
-      if (selected.classList[1] == "WHITE" || selected.classList[1] == "BLACK" && selected.classList.contains("forditva")) {
+      if (parseInt(iy[0])-1 >-1 && selected.classList[1] == "WHITE" && !selected.classList.contains("forditva") || selected.classList[1] == "BLACK" && selected.classList.contains("forditva")) {
         iy[0] = parseInt(iy[0])-1;
-      }else{
+      }else if(parseInt(iy[0])+1 <12){
         iy[0] = parseInt(iy[0])+1;
       }
-      if(document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i == nextstep_p[nextstep])[0] || document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){
+      if(document.getElementById(iy[0]+":"+iy[1]).classList.length != 1 && document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i == nextstep_p[nextstep])[0] || document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){
         break;
       }
       if(document.getElementById(iy[0]+":"+iy[1]).classList[1] != nextstep_p[nextstep]){
@@ -163,7 +176,7 @@ function Possiblesteps(){
       }
     }
     iy = selected.id.split(':');
-    if (selected.classList[1] == "BLACK" || (selected.classList[1] == "WHITE" && selected.classList.contains("forditva"))) {
+    if (selected.classList[1] == "BLACK" && !selected.classList.contains("forditva") || (selected.classList[1] == "WHITE" && selected.classList.contains("forditva"))) {
       if ((parseInt(iy[0])+1)<12 && (parseInt(iy[1])+1)<8 && document.getElementById((parseInt(iy[0])+1)+":"+(parseInt(iy[1])+1)).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]) {
         possibles.push((parseInt(iy[0])+1)+":"+(parseInt(iy[1])+1));
         document.getElementById((parseInt(iy[0])+1)+":"+(parseInt(iy[1])+1)).classList.add("attack");
@@ -182,18 +195,113 @@ function Possiblesteps(){
         document.getElementById((parseInt(iy[0])-1)+":"+(parseInt(iy[1])+1)).classList.add("attack");
       }
     }
-    /*for (let i = 0; i < 3; i++) {
-      iy[0] = selected.classList[1] == "WHITE" ? parseInt(iy[0])-1:parseInt(iy[0])+1;
-      if(document.getElementById(iy[0]+":"+iy[1]).classList[1] != nextstep_p[nextstep]){
+  }else if(type == "KING"){
+    for (let i = -1; i > -3; i--) {
+      iy = selected.id.split(':');
+      if (parseInt(iy[0])+i >-1) {   
+        iy[0] = parseInt(iy[0])+i;
         possibles.push(iy[0]+":"+iy[1]);
+        if(document.getElementById(iy[0]+":"+iy[1]).classList.length != 1 && document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i == nextstep_p[nextstep])[0] || document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){
+          if(document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){document.getElementById(iy[0]+":"+iy[1]).classList.add("attack");}
+          break;
+        }
         document.getElementById(iy[0]+":"+iy[1]).classList.add("possible");
+      }
     }
-    if (document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]) {
-      possibles.push(iy[0]+":"+iy[1]);
-      document.getElementById(iy[0]+":"+iy[1]).classList.add("attack");
-    }*/
+    for (let i = 1; i < 3; i++) {
+      iy = selected.id.split(':');
+      if (parseInt(iy[0])+i <12) {   
+        iy[0] = parseInt(iy[0])+i;
+        possibles.push(iy[0]+":"+iy[1]);
+        if(document.getElementById(iy[0]+":"+iy[1]).classList.length != 1 && document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i == nextstep_p[nextstep])[0] || document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){
+          if(document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){document.getElementById(iy[0]+":"+iy[1]).classList.add("attack");}
+          break;
+        }
+        document.getElementById(iy[0]+":"+iy[1]).classList.add("possible");
+      }
+    }
+
+    for (let i = -1; i > -3; i--) {
+      iy = selected.id.split(':');
+      if (parseInt(iy[1])+i >-1) {   
+        iy[1] = parseInt(iy[1])+i;
+        possibles.push(iy[0]+":"+iy[1]);
+        if(document.getElementById(iy[0]+":"+iy[1]).classList.length != 1 && document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i == nextstep_p[nextstep])[0] || document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){
+          if(document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){document.getElementById(iy[0]+":"+iy[1]).classList.add("attack");}
+          break;
+        }
+        document.getElementById(iy[0]+":"+iy[1]).classList.add("possible");
+      }
+    }
+    for (let i = 1; i < 3; i++) {
+      iy = selected.id.split(':');
+      if (parseInt(iy[1])+i <8) {   
+        iy[1] = parseInt(iy[1])+i;
+        possibles.push(iy[0]+":"+iy[1]);
+        if(document.getElementById(iy[0]+":"+iy[1]).classList.length != 1 && document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i == nextstep_p[nextstep])[0] || document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){
+          if(document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){document.getElementById(iy[0]+":"+iy[1]).classList.add("attack");}
+          break;
+        }
+        document.getElementById(iy[0]+":"+iy[1]).classList.add("possible");
+      }
+    }
+
+    for (let i = 1; i < 3; i++) {
+      iy = selected.id.split(':');
+      if (parseInt(iy[0])+i <12 && parseInt(iy[1])+i <8) {   
+        iy[1] = parseInt(iy[1])+i;
+        iy[0] = parseInt(iy[0])+i;
+        possibles.push(iy[0]+":"+iy[1]);
+        if(document.getElementById(iy[0]+":"+iy[1]).classList.length != 1 && document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i == nextstep_p[nextstep])[0] || document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){
+          if(document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){document.getElementById(iy[0]+":"+iy[1]).classList.add("attack");}
+          break;
+        }
+        document.getElementById(iy[0]+":"+iy[1]).classList.add("possible");
+      }
+    }
+    for (let i = 1; i < 3; i++) {
+      iy = selected.id.split(':');
+      if (parseInt(iy[0])-i >-1 && parseInt(iy[1])-i >-1) {   
+        iy[1] = parseInt(iy[1])-i;
+        iy[0] = parseInt(iy[0])-i;
+        possibles.push(iy[0]+":"+iy[1]);
+        if(document.getElementById(iy[0]+":"+iy[1]).classList.length != 1 && document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i == nextstep_p[nextstep])[0] || document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){
+          if(document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){document.getElementById(iy[0]+":"+iy[1]).classList.add("attack");}
+          break;
+        }
+        document.getElementById(iy[0]+":"+iy[1]).classList.add("possible");
+      }
+    }
+
+    for (let i = 1; i < 3; i++) {
+      iy = selected.id.split(':');
+      if (parseInt(iy[0])-i >-1 && parseInt(iy[1])+i <8) {   
+        iy[1] = parseInt(iy[1])+i;
+        iy[0] = parseInt(iy[0])-i;
+        possibles.push(iy[0]+":"+iy[1]);
+        if(document.getElementById(iy[0]+":"+iy[1]).classList.length != 1 && document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i == nextstep_p[nextstep])[0] || document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){
+          if(document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){document.getElementById(iy[0]+":"+iy[1]).classList.add("attack");}
+          break;
+        }
+        document.getElementById(iy[0]+":"+iy[1]).classList.add("possible");
+      }
+    }
+    for (let i = 1; i < 3; i++) {
+      iy = selected.id.split(':');
+      if (parseInt(iy[0])+i <12 && parseInt(iy[1])-i >-1) {   
+        iy[1] = parseInt(iy[1])-i;
+        iy[0] = parseInt(iy[0])+i;
+        possibles.push(iy[0]+":"+iy[1]);
+        if(document.getElementById(iy[0]+":"+iy[1]).classList.length != 1 && document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i == nextstep_p[nextstep])[0] || document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){
+          if(document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){document.getElementById(iy[0]+":"+iy[1]).classList.add("attack");}
+          break;
+        }
+        document.getElementById(iy[0]+":"+iy[1]).classList.add("possible");
+      }
+    }
   }
 }
+
 function General(){
   var board = document.getElementById("board");
   for (let i = 0; i < 12; i++) {
