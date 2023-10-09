@@ -310,6 +310,40 @@ function IdoEnable(){
   }
 }
 
+var Quality = "low";
+var lenyil = 0;
+function QualityLenyil(){
+  if(lenyil == 0){
+    lenyil = 1;
+    document.getElementById('QualityEnable').classList.add("QualityEnableClass");
+    document.getElementById('low').classList.add("QualityButtonsLenyil");
+    document.getElementById('medium').classList.add("QualityButtonsLenyil");
+    document.getElementById('high').classList.add("QualityButtonsLenyil");
+    setTimeout(GombokMegjelen,500);
+    document.getElementById(Quality).classList.add("CurrentQuality");
+  }
+  else{
+    lenyil = 0;
+    document.getElementById('low').classList.remove("QualityButtonsLMegjelen");
+    document.getElementById('medium').classList.remove("QualityButtonsLMegjelen");
+    document.getElementById('high').classList.remove("QualityButtonsLMegjelen");
+    setTimeout(GombokEltuntet,500);
+  }
+}
+
+function GombokMegjelen(){
+  document.getElementById('low').classList.add("QualityButtonsLMegjelen");
+  document.getElementById('medium').classList.add("QualityButtonsLMegjelen");
+  document.getElementById('high').classList.add("QualityButtonsLMegjelen");
+}
+
+function GombokEltuntet(){
+  document.getElementById('low').classList.remove("QualityButtonsLenyil");
+  document.getElementById('medium').classList.remove("QualityButtonsLenyil");
+  document.getElementById('high').classList.remove("QualityButtonsLenyil");
+  document.getElementById('QualityEnable').classList.remove("QualityEnableClass");
+}
+
 function d2general(){
   var board = document.getElementById("board");
   board.innerHTML="";

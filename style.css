@@ -23,9 +23,9 @@ html,body {
 }
 .Buttons {
     background-color:rgba(78, 78, 78, 0.8);
-    border:2px solid #fff;
+    border:2px solid rgb(158, 158, 158);
     border-radius:.6vw;
-    color:#fff;
+    color:rgb(158, 158, 158);
     cursor:pointer;
     font-size:1.2vw;
     height:3vw;
@@ -33,14 +33,14 @@ html,body {
     margin:.05vw 1vw;
     text-transform:uppercase;
     transition:.6s;
-    width: 8vw;
+    width: 6vw;
     position: relative;
 }
 
 .Buttons:hover{
     letter-spacing: 0.2em;
-    font-size: 1.3vw;
-    border: 2px solid lime;
+    border:2px solid white;
+    color: white;
     background-color: rgba(44, 44, 44)
 }
 
@@ -401,6 +401,7 @@ transform-origin:0 100%;
 
 #FirstColumn{
     display: flex;
+    width: 100%;
 }
 
 #RecentColor{
@@ -423,9 +424,9 @@ transform-origin:0 100%;
 }
 
 #SecondColumn{
-    margin: 4vw 0 0 1vw;
-    width: 20vw;
-    height: 20vw;
+    margin: 2vw 0 0 1vw;
+    width: auto;
+    height: auto;
     float: left;
 }
 
@@ -437,7 +438,7 @@ transform-origin:0 100%;
     height: 1.4vw;
     width: 1.4vw;
     background-color: #eee;
-    margin-top: .8vw;
+    margin-top: .4vw;
     position: relative;
 }
 
@@ -491,4 +492,69 @@ transform-origin:0 100%;
     margin-top: 7px;
     width: 80%;
     cursor: pointer;
+}
+
+#ThirdColumn{
+    margin: 10vw 0 0 1vw;
+    width: 30%;
+}
+
+#QualityEnable{
+    width: 10vw;
+    font-size: 1.2vw;
+    margin-left: 0vw;
+    border-radius: .1vw;
+    border: 2px solid rgb(141, 141, 141);
+    background-color:rgba(78, 78, 78, 0.8);
+    color: rgb(141, 141, 141);
+    padding: .3vw;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: .4s;
+}
+
+#QualityEnable:hover{
+    border: 2px solid white;
+    color: white;
+    letter-spacing: 0.2em;
+}
+
+.QualityEnableClass{
+    border: 2px solid white !important;
+    color: white !important;
+    letter-spacing: 0.2em !important;
+}
+
+.QualityButtons input{
+    width: 7vw;
+    margin: .2vw 1.3vw;
+    font-size: 1vw;
+    border-radius: .4vw;
+    border: 2px solid white;
+    background-color:rgba(78, 78, 78, 0.8);
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    padding: .2vw;
+    cursor: pointer;
+    margin-top: -6vw;
+    opacity: 0;
+    z-index: -1;
+}
+
+.QualityButtonsLenyil{
+    margin-top: .2vw !important;
+    transition: ease-in-out .7s !important;
+    z-index: -1 !important;
+}
+
+.QualityButtonsLMegjelen{
+    opacity: 1 !important;
+    transition: ease-in-out .5s !important;
+}
+
+.CurrentQuality{
+    color: lime !important;
+    border: 2px solid lime !important;
 }

@@ -25,6 +25,20 @@
 		<input type="number" name="IdoAddPerc" id="IdoAddPerc" min="0" value="0"><label for="IdoAddPerc" id="IdoAddPercLabel">Perc</label>
 		<input type="number" name="IdoAdMasodPerc" id="IdoAdMasodPerc" min="1" value="1"><label for="IdoAdMasodPerc" id="IdoAdMasodPercLabel">Másodperc</label>
 	</div>
+	<div id="ThirdColumn">
+		<input type="button" value="Quality" id="QualityEnable" class="" onclick="QualityLenyil()">
+		<div class="QualityButtons">
+			<div>
+				<input type="button" value="low" id="low" class="" onclick="Quality('low')">
+			</div>
+			<div>
+				<input type="button" value="medium" id="medium" class="" onclick="Quality('medium')">
+			</div>
+			<div>
+				<input type="button" value="high" id="high" class="" onclick="Quality('high')">
+			</div>
+		</div>
+	</div>
 	<div class="uniform">
 		<div class="object3d chess-defaults">
 		<div class="reusable-rect bs main-stage">
