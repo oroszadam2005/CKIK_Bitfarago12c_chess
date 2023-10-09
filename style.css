@@ -5,7 +5,7 @@ html,body {
 .hover{
     background-color: lime !important;
     border-radius: 50%;
-    transition: background-color 200ms linear;
+    transition: background-color 300ms linear;
     cursor: pointer;
 }
 .selected{
@@ -43,7 +43,7 @@ overflow:visible;
 position:absolute;
 top:0;
 transform:scale(var(--s,1));
-transition:2s;
+transition:3s;
 width:100vw;
 }
 
@@ -53,7 +53,7 @@ position:relative;
 top:0;
 transform:perspective(var(--p,1000px)) rotateX(var(--x,0deg)) rotateY(var(--y,0deg)) rotateZ(var(--z,0deg)) translate3d(var(--tx,0px),var(--ty,0px),var(--tz,-12px));
 transform-style:preserve-3d;
-transition:2s;
+transition:3s;
 transition-property:top,transform;
 --path-max-rotate:calc(360deg + var(--z,0deg));
 }
@@ -175,7 +175,7 @@ z-index:-1;
 
 .chess-defaults {
 --block-set-size:calc(var(--block-size) * 2);
---block-size:100px;
+--block-size:90px;
 --block-size-ag:100;
 --border-size:80px;
 --border-size:2px;
@@ -243,6 +243,7 @@ z-index:5;
 }
 
 .BLACK.HORSE {
+transition: ease 0s;
 transform:rotate(180deg);
 z-index:5;
 }
@@ -389,9 +390,8 @@ transform-origin:0 100%;
 --width:var(--piece-thickness);
 }
 .piece img{
-    width: 100%;
+    margin-left: 14px;
+    margin-top: 7px;
+    width: 80%;
     cursor: pointer;
-}
-.figures{
-    width: 100%;
 }
