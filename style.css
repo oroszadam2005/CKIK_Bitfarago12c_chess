@@ -388,3 +388,10 @@ transform-origin:0 100%;
 --length:var(--piece-thickness);
 --width:var(--piece-thickness);
 }
+.piece img{
+    width: 100%;
+    cursor: pointer;
+}
+.figures{
+    width: 100%;
+}
