@@ -1,6 +1,7 @@
 html,body {
     backface-visibility:hidden;
     background-color:#666666;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .hover{
     background-color: lime !important;
@@ -21,7 +22,7 @@ html,body {
     border-radius: 50%;
 }
 .Buttons {
-    background-color:rgba(51,51,51,0.8);
+    background-color:rgba(78, 78, 78, 0.8);
     border:2px solid #fff;
     border-radius:.6vw;
     color:#fff;
@@ -32,7 +33,15 @@ html,body {
     margin:.05vw 1vw;
     text-transform:uppercase;
     transition:.6s;
-    width:6vw;
+    width: 8vw;
+    position: relative;
+}
+
+.Buttons:hover{
+    letter-spacing: 0.2em;
+    font-size: 1.3vw;
+    border: 2px solid lime;
+    background-color: rgba(44, 44, 44)
 }
 
 .uniform {
@@ -387,4 +396,85 @@ transform-origin:0 100%;
 --height:var(--piece-height);
 --length:var(--piece-thickness);
 --width:var(--piece-thickness);
+}
+
+#FirstColumn{
+    display: flex;
+}
+
+#RecentColor{
+    border: 2px solid black;
+    width: 6vw;
+    height: 3vw;
+    border-radius: .6vw;
+    margin: auto 1vw;
+    background-color: white;
+    transition: .5s;
+}
+
+#RecentColor p{
+    text-align: center;
+    font-size: 1.4vw;
+    margin-top: .7vw;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: default;
+}
+
+#SecondColumn{
+    margin: 4vw 0 0 1vw;
+    width: 20vw;
+    height: 20vw;
+    float: left;
+}
+
+#SecondColumn input, #SecondColumn label{
+    cursor: pointer;
+}
+
+#Korok, #Ido{
+    height: 1.4vw;
+    width: 1.4vw;
+    background-color: #eee;
+    margin-top: .8vw;
+    position: relative;
+}
+
+#Korok:hover{
+    background-color: gray;
+}
+
+#Korok::after{
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+#Korok:checked{
+    background-color: gray;
+    border-radius: 50%;
+}
+
+#KorokLabel, #IdoLabel{
+    color: white;
+    font-size: 1.4vw;
+}
+
+#KorokAdd, #IdoAddPerc, #IdoAdMasodPerc{
+    margin-top: .4vw;
+    margin-left: .2vw;
+}
+
+#IdoLabel{
+    margin-top: .5vw;
+}
+
+#IdoAddPerc, #IdoAdMasodPerc{
+    width: 3vw;
+}
+
+#IdoAddPercLabel, #IdoAdMasodPercLabel{
+    margin-right: .5vw;
+    margin-left: .2vw;
+    color: white;
 }
