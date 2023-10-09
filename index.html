@@ -9,29 +9,15 @@
   <script async src="script.js"></script>
 </head>
 <body>
-	<div id="FirstColumn">
-		<input type="button" onclick="bal()" id="ViewSide" class="Buttons" value="bal" disabled>
-		<input type="button" onclick="d3()" id="DView" class="Buttons" value="3D">
-		<div id="RecentColor">
-			<p id="RecentColorP">Lép</p>
-		</div>
-	</div>
-	<div id="SecondColumn">
-		<input type="checkbox" id="Korok" name="Korok" onchange="KorokEnable()">
-		<label for="Korok" id="KorokLabel">Körök</label></br>
-		<input type="number" name="" id="KorokAdd" value="1" min="1"></br>
-		<input type="checkbox" id="Ido" name="Ido" onchange="IdoEnable()">
-		<label for="Ido" id="IdoLabel">Idő</label></br>
-		<input type="number" name="IdoAddPerc" id="IdoAddPerc" min="0" value="0"><label for="IdoAddPerc" id="IdoAddPercLabel">Perc</label>
-		<input type="number" name="IdoAdMasodPerc" id="IdoAdMasodPerc" min="1" value="1"><label for="IdoAdMasodPerc" id="IdoAdMasodPercLabel">Másodperc</label>
-	</div>
+	<input type="button" onclick="bal()" id="ViewSide" class="Buttons" value="bal" disabled>
+	<input type="button" onclick="d3()" id="DView" class="Buttons" value="3D">
 	<div class="uniform">
 		<div class="object3d chess-defaults">
 		<div class="reusable-rect bs main-stage">
 			<div class="sides side1 bs"></div>
 			<div class="sides side2 bs"></div>
-			<div class="main-elements">
-				<div class="board" id="board">
+			<div class="main-elements" id="main">
+				<div class="board low" id="board">
 
 				</div>
 			</div>

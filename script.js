@@ -12,33 +12,33 @@ var piece =
 [
 {name:"QUEEN",point:5,
 color:"BLACK",
-code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="piece-head"></div><div class="reusable-rect piece-hood"><div class="sides side1"></div> <div class="sides side2"></div></div>',
+code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="piece-head"><div class="reusable-trapezoid"><div class="trapesides trapeside1"></div><div class="trapesides trapeside2"></div><div class="trapesides trapeside3"></div><div class="trapesides trapeside4"></div><div class="trapesides trapeside5"></div></div></div><div class="reusable-rect piece-diamond"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-hood"><div class="sides side1"></div> <div class="sides side2"></div></div>',
 img: "babuk/fekkiralyno.png"},
 
 
 {name:"KING",point:2,
 color:"BLACK",
-code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div></div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="piece-head"></div><div class="reusable-rect piece-hood"> <div class="sides side1"></div> <div class="sides side2"></div> </div>',
+code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div></div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="piece-head"><div class="reusable-trapezoid"><div class="trapesides trapeside1"></div><div class="trapesides trapeside2"></div><div class="trapesides trapeside3"></div><div class="trapesides trapeside4"></div><div class="trapesides trapeside5"></div></div></div><div class="reusable-rect piece-diamond"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-hood"> <div class="sides side1"></div> <div class="sides side2"></div> </div>',
 img: "babuk/fekkiraly.png"},
 
 {name:"BISHOP",point:2,
 color:"BLACK",
-code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-head"> <div class="sides side1"></div><div class="sides side2"></div> </div>',
+code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-head"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="piece-crown"><div class="ccside ccside1"></div><div class="ccside ccside2"></div><div class="ccside ccside3"></div><div class="ccside ccside4"></div></div>',
 img: "babuk/fekbishop.png"},
 
 {name:"HORSE",point:2,
 color:"BLACK",
-code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-tilt1"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-tilt2"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-tilt3"> <div class="sides side1"></div><div class="sides side2"></div> </div>',
+code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-tilt1"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-tilt2"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-tilt3"> <div class="sides side1"></div><div class="sides side2"></div> </div>',
 img: "babuk/feklovag.png"},
 
 {name:"ROOK",point:3,
 color:"BLACK",
-code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-head"><div class="sides side1"></div><div class="sides side2"></div><div class="reusable-rect piece-head-left"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-head-right"> <div class="sides side1"></div><div class="sides side2"></div> </div></div><div class="reusable-rect piece-head-center"> <div class="sides side1"></div><div class="sides side2"></div> </div>',
+code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-head"><div class="sides side1"></div><div class="sides side2"></div><div class="reusable-rect piece-head-left"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-head-right"> <div class="sides side1"></div><div class="sides side2"></div> </div></div><div class="reusable-rect piece-head-center"> <div class="sides side1"></div><div class="sides side2"></div> </div>',
 img: "babuk/fekfuto.png"},
 
 {name:"PAWN",point:1,
 color:"BLACK",
-code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-head"> <div class="sides side1"></div><div class="sides side2"></div> </div>',
+code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-head"> <div class="sides side1"></div><div class="sides side2"></div> </div>',
 img: "babuk/fekgyalog.png"}
 
 ]
@@ -46,32 +46,32 @@ var piece2 =
 [
 {name:"QUEEN",point:5,
 color:"WHITE",
-code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="piece-head"></div><div class="reusable-rect piece-hood"><div class="sides side1"></div> <div class="sides side2"></div></div>',
+code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="piece-head"><div class="reusable-trapezoid"><div class="trapesides trapeside1"></div><div class="trapesides trapeside2"></div><div class="trapesides trapeside3"></div><div class="trapesides trapeside4"></div><div class="trapesides trapeside5"></div></div></div><div class="reusable-rect piece-diamond"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-hood"><div class="sides side1"></div> <div class="sides side2"></div></div>',
 img: "babuk/feherkiralyno.png"},
 
 {name:"KING",point:2,
 color:"WHITE",
-code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div></div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="piece-head"></div><div class="reusable-rect piece-hood"> <div class="sides side1"></div> <div class="sides side2"></div> </div>',
+code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div></div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="piece-head"><div class="reusable-trapezoid"><div class="trapesides trapeside1"></div><div class="trapesides trapeside2"></div><div class="trapesides trapeside3"></div><div class="trapesides trapeside4"></div><div class="trapesides trapeside5"></div></div></div><div class="reusable-rect piece-diamond"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-hood"> <div class="sides side1"></div> <div class="sides side2"></div> </div>',
 img: "babuk/fehkiraly.png"},
 
 {name:"BISHOP",point:2,
 color:"WHITE",
-code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-head"> <div class="sides side1"></div><div class="sides side2"></div> </div>',
+code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-head"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="piece-crown"><div class="ccside ccside1"></div><div class="ccside ccside2"></div><div class="ccside ccside3"></div><div class="ccside ccside4"></div></div>',
 img: "babuk/fehbishop.png"},
 
 {name:"HORSE",point:2,
 color:"WHITE",
-code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-tilt1"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-tilt2"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-tilt3"> <div class="sides side1"></div><div class="sides side2"></div> </div>',
+code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-tilt1"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-tilt2"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-tilt3"> <div class="sides side1"></div><div class="sides side2"></div> </div>',
 img: "babuk/fehlovag.png"},
 
 {name:"ROOK",point:3,
 color:"WHITE",
-code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-head"><div class="sides side1"></div><div class="sides side2"></div><div class="reusable-rect piece-head-left"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-head-right"> <div class="sides side1"></div><div class="sides side2"></div> </div></div><div class="reusable-rect piece-head-center"> <div class="sides side1"></div><div class="sides side2"></div> </div>',
+code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-head"><div class="sides side1"></div><div class="sides side2"></div><div class="reusable-rect piece-head-left"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-head-right"> <div class="sides side1"></div><div class="sides side2"></div> </div></div><div class="reusable-rect piece-head-center"> <div class="sides side1"></div><div class="sides side2"></div> </div>',
 img: "babuk/fehfuto.png"},
 
 {name:"PAWN",point:1,
 color:"WHITE",
-code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-head"> <div class="sides side1"></div><div class="sides side2"></div> </div>',
+code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-head"> <div class="sides side1"></div><div class="sides side2"></div> </div>',
 img: "babuk/fehgyalog.png"}
 ]
 var table = [[piece[4],piece[3],piece[2],piece[1],piece[0],piece[2],piece[3],piece[4]],
@@ -157,14 +157,8 @@ function Lepes(){
   }
   if (nextstep == 0) {
     nextstep = 1;
-    document.getElementById('RecentColor').style.backgroundColor = "white";
-    document.getElementById('RecentColor').style.border = "2px solid black";
-    document.getElementById('RecentColor').style.color = "black";
   }else{
     nextstep = 0;
-    document.getElementById('RecentColor').style.backgroundColor = "black";
-    document.getElementById('RecentColor').style.border = "2px solid white";
-    document.getElementById('RecentColor').style.color = "white";
   }
   if (iy2[0] == 11 || iy2[0] == 0) {
     if(lasthover.classList.contains("forditva")){
@@ -269,7 +263,7 @@ function d3general(){
   board.innerHTML="";
   for (let i = 0; i < 12; i++) {
     for (let j = 0; j < 8; j++) {
-      board.innerHTML+= `<div onclick="Click()" class="piece" id="${i}:${j}" style="--v:${i};--h:${j};"></div>`;
+      board.innerHTML+= `<div class="piece" id="${i}:${j}" style="--v:${i};--h:${j};"></div>`;
       if (table[i][j] != undefined) {        
         var div = document.getElementById(i+":"+j);
         div.innerHTML+=table[i][j].code;
@@ -277,36 +271,6 @@ function d3general(){
         div.classList.add(table[i][j].name);
       }
     }
-  }
-}
-
-var korok = 0;
-var ido = 0;
-function KorokEnable(){
-  if(korok == 0){
-    document.getElementById("KorokAdd").style.opacity = "1";
-    korok = 1;
-  }
-  else{
-    document.getElementById("KorokAdd").style.opacity = "0";
-    korok = 0;
-  }
-}
-
-function IdoEnable(){
-  if(ido == 0){
-    document.getElementById("IdoAddPerc").style.opacity = "1";
-    document.getElementById("IdoAdMasodPerc").style.opacity = "1";
-    document.getElementById("IdoAddPercLabel").style.opacity = "1";
-    document.getElementById("IdoAdMasodPercLabel").style.opacity = "1";
-    ido = 1;
-  }
-  else{
-    document.getElementById("IdoAddPerc").style.opacity = "0";
-    document.getElementById("IdoAdMasodPerc").style.opacity = "0";
-    document.getElementById("IdoAddPercLabel").style.opacity = "0";
-    document.getElementById("IdoAdMasodPercLabel").style.opacity = "0";
-    ido = 0;
   }
 }
 
@@ -330,9 +294,10 @@ function d2general(){
 }
 window.addEventListener('load', function(){
   setTimeout(function(){apply([0,0,0,0,-150,0,3705,0.6])},1000)
-  setTimeout(function(){d2general(),Mouse()},4000)
+  setTimeout(function(){d2general(),Mouse()},1000)
 });
 var lasthover = document.body;
+document.getElementById("main").addEventListener("click",Click)
 function Mouse(){
   document.getElementById("board").addEventListener('mousemove', e => {
     var element = document.elementFromPoint(e.clientX, e.clientY).closest('.piece');
@@ -350,6 +315,11 @@ function Mouse(){
         element.classList.add("hover");
       }
     }
+    console.log(element);
     setTimeout(function(){Mouse()},0)
   }, {passive: true,once: true})
 }
+
+function Quality(value){
+  document.getElementById("board"),classList[1] = value;
+};
