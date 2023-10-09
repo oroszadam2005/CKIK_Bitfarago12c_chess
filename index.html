@@ -19,11 +19,11 @@
 	<div id="SecondColumn">
 		<input type="checkbox" id="Korok" name="Korok" onchange="KorokEnable()">
 		<label for="Korok" id="KorokLabel">Körök</label></br>
-		<input type="number" name="" id="KorokAdd"></br>
+		<input type="number" name="" id="KorokAdd" value="1" min="1"></br>
 		<input type="checkbox" id="Ido" name="Ido" onchange="IdoEnable()">
 		<label for="Ido" id="IdoLabel">Idő</label></br>
-		<input type="" name="IdoAddPerc" id="IdoAddPerc"><label for="IdoAddPerc" id="IdoAddPercLabel">Perc</label>
-		<input type="" name="IdoAdMasodPerc" id="IdoAdMasodPerc"><label for="IdoAdMasodPerc" id="IdoAdMasodPercLabel">Másodperc</label>
+		<input type="number" name="IdoAddPerc" id="IdoAddPerc" min="0" value="0"><label for="IdoAddPerc" id="IdoAddPercLabel">Perc</label>
+		<input type="number" name="IdoAdMasodPerc" id="IdoAdMasodPerc" min="1" value="1"><label for="IdoAdMasodPerc" id="IdoAdMasodPercLabel">Másodperc</label>
 	</div>
 	<div class="uniform">
 		<div class="object3d chess-defaults">
