@@ -303,7 +303,7 @@ window.addEventListener('load', function(){
   setTimeout(function(){d2general(),Mouse()},1000)
 });
 var lasthover = document.body;
-//document.getElementById("main").addEventListener("click",Click)
+document.getElementById("main").addEventListener("click",Click)
 function Mouse(){
   document.getElementById("board").addEventListener('mousemove', e => {
     var element = document.elementFromPoint(e.clientX, e.clientY).closest('.piece');
@@ -390,6 +390,11 @@ function GombokEltuntet(){
   document.getElementById('QualityEnable').classList.remove("QualityEnableClass");
 }
 
-function Quality(value){
-  document.getElementById("board"),classList[1] = value;
+function qualityc(value){
+  document.getElementById("main").classList = "main-elements "+value;
+  Quality = value;
+  document.getElementById('low').classList.remove("CurrentQuality");
+  document.getElementById('medium').classList.remove("CurrentQuality");
+  document.getElementById('high').classList.remove("CurrentQuality");
+  document.getElementById(Quality).classList.add("CurrentQuality");
 };
