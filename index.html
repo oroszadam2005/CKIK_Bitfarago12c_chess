@@ -12,21 +12,20 @@
 	<div id="FirstColumn">
 		<input type="button" onclick="bal()" id="ViewSide" class="Buttons" value="bal" disabled>
 		<input type="button" onclick="d3()" id="DView" class="Buttons" value="3D">
-		<div id="RecentColor">
-			<p id="RecentColorP">Lép</p>
+		<div id="KorokSzama">
+			<p>1</p>
 		</div>
 	</div>
 	<div id="SecondColumn">
-		<input type="checkbox" id="Korok" name="Korok" onchange="KorokEnable()">
-		<label for="Korok" id="KorokLabel">Körök</label></br>
-		<input type="number" name="" id="KorokAdd" value="1" min="1"></br>
+		<label for="KorokAdd" id="KorokLabel">Körök: </label>
+		<input type="number" name="KorokAdd" id="KorokAdd" value="1" min="1" max="10" onchange="KorokSzamaFV(this)"></br>
 		<input type="checkbox" id="Ido" name="Ido" onchange="IdoEnable()">
 		<label for="Ido" id="IdoLabel">Idő</label></br>
-		<input type="number" name="IdoAddPerc" id="IdoAddPerc" min="0" value="0"><label for="IdoAddPerc" id="IdoAddPercLabel">Perc</label>
-		<input type="number" name="IdoAdMasodPerc" id="IdoAdMasodPerc" min="1" value="1"><label for="IdoAdMasodPerc" id="IdoAdMasodPercLabel">Másodperc</label>
+		<input type="number" name="IdoAddPerc" id="IdoAddPerc" min="0" max="60" value="0"><label for="IdoAddPerc" id="IdoAddPercLabel">Perc</label>
+		<input type="number" name="IdoAdMasodPerc" id="IdoAdMasodPerc" min="1" max="60" value="1"><label for="IdoAdMasodPerc" id="IdoAdMasodPercLabel">Másodperc</label>
 	</div>
 	<div id="ThirdColumn">
-		<input type="button" value="Quality" id="QualityEnable" class="" onclick="QualityLenyil()">
+		<input type="button" value="Quality" id="QualityEnable" class="">
 		<div class="QualityButtons">
 			<div>
 				<input type="button" value="low" id="low" class="" onclick="qualityc('low')">
@@ -37,6 +36,24 @@
 			<div>
 				<input type="button" value="high" id="high" class="" onclick="qualityc('high')">
 			</div>
+		</div>
+	</div>
+	<div class="WhitePlayer" id="WhitePlayer">
+		<p>Fehér játékos</p>
+		<div class="WhitePlayerButtons">
+			<input type="button" value="Joker lépés">
+		</div>
+		<div class="WhitePlayerButtons">
+			<input type="button" value="Dupla lépés">
+		</div>
+	</div>
+	<div class="BlackPlayer" id="BlackPlayer">
+		<p>Fekete Játékos</p>
+		<div class="BlackPlayerButtons">
+			<input type="button" value="Joker lépés">
+		</div>
+		<div class="BlackPlayerButtons">
+			<input type="button" value="Dupla lépés">
 		</div>
 	</div>
 	<div class="uniform">

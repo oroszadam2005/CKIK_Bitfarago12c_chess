@@ -90,7 +90,7 @@ var table = [[piece[4],piece[3],piece[2],piece[1],piece[0],piece[2],piece[3],pie
 
 function d3(){
   document.getElementById('ViewSide').disabled = false;
-  document.getElementById('DView').value = "2D";
+  document.getElementById('DView').classList.add('EnableClass');
   document.getElementById('DView').setAttribute("onclick","d2()");
   if(document.getElementById('ViewSide').value == "jobb"){
     jobb();
@@ -103,7 +103,7 @@ function d3(){
 }
 function d2(){
   document.getElementById('ViewSide').disabled = true;
-  document.getElementById('DView').value = "3D";
+  document.getElementById('DView').classList.remove('EnableClass');
   document.getElementById('DView').setAttribute("onclick","d3()");
   apply([0,0,0,0,-180,0,3705,0.6]);
   d2general();
@@ -157,14 +157,12 @@ function Lepes(){
   }
   if (nextstep == 0) {
     nextstep = 1;
-    document.getElementById('RecentColor').style.backgroundColor = "white";
-    document.getElementById('RecentColor').style.border = "2px solid black";
-    document.getElementById('RecentColor').style.color = "black";
+    //fehér
+    LepesKinyil('feher');
   }else{
     nextstep = 0;
-    document.getElementById('RecentColor').style.backgroundColor = "black";
-    document.getElementById('RecentColor').style.border = "2px solid white";
-    document.getElementById('RecentColor').style.color = "white";
+    //fekete
+    LepesKinyil('fekete');
   }
   if (iy2[0] == 11 || iy2[0] == 0) {
     if(lasthover.classList.contains("forditva")){
@@ -265,6 +263,9 @@ function lepesek(imin,imax,dir,iy,ic,yc){
 }
 
 function d3general(){
+  document.getElementById('QualityEnable').style.opacity = "1";
+  document.getElementById('QualityEnable').style.cursor = "pointer";
+  document.getElementById('QualityEnable').setAttribute("onclick","QualityLenyil()");
   var board = document.getElementById("board");
   board.innerHTML="";
   for (let i = 0; i < 12; i++) {
@@ -281,6 +282,15 @@ function d3general(){
 }
 
 function d2general(){
+  document.getElementById('QualityEnable').style.opacity = "0";
+  document.getElementById('QualityEnable').style.cursor = "default";
+  document.getElementById('QualityEnable').removeAttribute("onclick");
+  document.getElementById("WhitePlayer").classList.add('WhitePlayerOpen');
+  if(document.getElementById('low').classList.contains('QualityButtonsLMegjelen') && document.getElementById('medium').classList.contains('QualityButtonsLMegjelen') && 
+  document.getElementById('high').classList.contains('QualityButtonsLMegjelen')){
+    document.getElementById('QualityEnable').classList.remove("EnableClass");
+    QualityLenyil();
+  }
   var board = document.getElementById("board");
   board.innerHTML="";
   for (let i = 0; i < 12; i++) {
@@ -326,20 +336,9 @@ function Mouse(){
   }, {passive: true,once: true})
 }
 
-var korok = 0;
 var ido = 0;
-function KorokEnable(){
-  if(korok == 0){
-    document.getElementById("KorokAdd").style.opacity = "1";
-    korok = 1;
-  }
-  else{
-    document.getElementById("KorokAdd").style.opacity = "0";
-    korok = 0;
-  }
-}
 
-function IdoEnable(){
+function IdoEnable(){ 
   if(ido == 0){
     document.getElementById("IdoAddPerc").style.opacity = "1";
     document.getElementById("IdoAdMasodPerc").style.opacity = "1";
@@ -356,12 +355,16 @@ function IdoEnable(){
   }
 }
 
+function KorokSzamaFV(div){
+  document.getElementById('KorokSzama').innerHTML = "<p>"+div.value+"</p>";
+}
+
 var Quality = "low";
 var lenyil = 0;
 function QualityLenyil(){
   if(lenyil == 0){
     lenyil = 1;
-    document.getElementById('QualityEnable').classList.add("QualityEnableClass");
+    document.getElementById('QualityEnable').classList.add("EnableClass");
     document.getElementById('low').classList.add("QualityButtonsLenyil");
     document.getElementById('medium').classList.add("QualityButtonsLenyil");
     document.getElementById('high').classList.add("QualityButtonsLenyil");
@@ -373,6 +376,7 @@ function QualityLenyil(){
     document.getElementById('low').classList.remove("QualityButtonsLMegjelen");
     document.getElementById('medium').classList.remove("QualityButtonsLMegjelen");
     document.getElementById('high').classList.remove("QualityButtonsLMegjelen");
+    document.getElementById('QualityEnable').style.cursor = "default";
     setTimeout(GombokEltuntet,500);
   }
 }
@@ -387,7 +391,7 @@ function GombokEltuntet(){
   document.getElementById('low').classList.remove("QualityButtonsLenyil");
   document.getElementById('medium').classList.remove("QualityButtonsLenyil");
   document.getElementById('high').classList.remove("QualityButtonsLenyil");
-  document.getElementById('QualityEnable').classList.remove("QualityEnableClass");
+  document.getElementById('QualityEnable').classList.remove("EnableClass");
 }
 
 function qualityc(value){
@@ -398,3 +402,18 @@ function qualityc(value){
   document.getElementById('high').classList.remove("CurrentQuality");
   document.getElementById(Quality).classList.add("CurrentQuality");
 };
+
+function LepesKinyil(value){
+  if(value == 'feher'){
+    document.getElementById("BlackPlayer").classList.remove('BlackPlayerOpen');
+    document.getElementById("WhitePlayer").classList.remove('WhitePlayerClose');
+    document.getElementById("WhitePlayer").classList.add('WhitePlayerOpen');
+    document.getElementById("BlackPlayer").classList.add('BlackPlayerClose');
+  }
+  else if(value == 'fekete'){
+    document.getElementById("BlackPlayer").classList.add('BlackPlayerOpen');
+    document.getElementById("WhitePlayer").classList.add('WhitePlayerClose');
+    document.getElementById("WhitePlayer").classList.remove('WhitePlayerOpen');
+    document.getElementById("BlackPlayer").classList.remove('BlackPlayerClose');
+  }
+}
