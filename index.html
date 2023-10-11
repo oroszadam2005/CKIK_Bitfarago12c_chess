@@ -9,20 +9,37 @@
   <script async src="script.js"></script>
 </head>
 <body>
-	<div id="FirstColumn">
-		<input type="button" onclick="bal()" id="ViewSide" class="Buttons" value="bal" disabled>
-		<input type="button" onclick="d3()" id="DView" class="Buttons" value="3D">
-		<div id="KorokSzama">
-			<p>1</p>
+	<div class="StarterDiv" id="StarterDiv">
+		<div class="WarningSign">
+			<h1 id="WarningSignh1">Vigyázat!</h1>
+			<h3 id="WarningSignh3">Nagyobb grafikai beállítással lehetséges hogy a játék akadni. laggolni fog!</h3>
+		</div>
+		<div class="SettingsDiv">
+			<div id="KorokDiv">
+				<label for="KorokAdd" id="KorokLabel">Körök: </label>
+				<input type="number" name="KorokAdd" id="KorokAdd" value="1" min="1" onchange="KorokSzamaFV(this)"></br>
+			</div>
+			<div id="IdoDiv">
+				<input type="checkbox" id="Ido" name="Ido" onchange="IdoEnable()">
+				<label for="Ido" id="IdoLabel">Idő</label></br>
+				<input type="number" name="IdoAddPerc" id="IdoAddPerc" min="0" max="60" value="0" onchange="IdoValtozik()"><label for="IdoAddPerc" id="IdoAddPercLabel">Perc</label>
+				<input type="number" name="IdoAdMasodPerc" id="IdoAdMasodPerc" min="1" max="60" value="1" onchange="IdoValtozik()"><label for="IdoAdMasodPerc" id="IdoAdMasodPercLabel">Másodperc</label>
+			</div>
+		</div>
+		<div class="InditasDiv">
+			<input type="button" value="indítás" id="Inditas" onclick="Inditas()">
 		</div>
 	</div>
-	<div id="SecondColumn">
-		<label for="KorokAdd" id="KorokLabel">Körök: </label>
-		<input type="number" name="KorokAdd" id="KorokAdd" value="1" min="1" max="10" onchange="KorokSzamaFV(this)"></br>
-		<input type="checkbox" id="Ido" name="Ido" onchange="IdoEnable()">
-		<label for="Ido" id="IdoLabel">Idő</label></br>
-		<input type="number" name="IdoAddPerc" id="IdoAddPerc" min="0" max="60" value="0"><label for="IdoAddPerc" id="IdoAddPercLabel">Perc</label>
-		<input type="number" name="IdoAdMasodPerc" id="IdoAdMasodPerc" min="1" max="60" value="1"><label for="IdoAdMasodPerc" id="IdoAdMasodPercLabel">Másodperc</label>
+	<div class="Jategveg" id="Jategveg">
+		<h1>A Fehér játékos nyert!</h1>
+		<div class="RestartButtonDiv">
+			<input type="button" id="RestartButton" value="újraindítás" onclick="Restart()">
+		</div>
+	</div>
+	<div id="FirstColumn">
+		<input type="button" id="ViewSide" class="Buttons" value="bal">
+		<input type="button" id="DView" class="Buttons" value="3D">
+		<div id="KorSzamlalo"></div>
 	</div>
 	<div id="ThirdColumn">
 		<input type="button" value="Quality" id="QualityEnable" class="">
@@ -46,6 +63,8 @@
 		<div class="WhitePlayerButtons">
 			<input type="button" value="Dupla lépés">
 		</div>
+		<div class="Timer" id="WhiteTimer">
+		</div>
 	</div>
 	<div class="BlackPlayer" id="BlackPlayer">
 		<p>Fekete Játékos</p>
@@ -54,6 +73,8 @@
 		</div>
 		<div class="BlackPlayerButtons">
 			<input type="button" value="Dupla lépés">
+		</div>
+		<div class="Timer" id="BlackTimer">
 		</div>
 	</div>
 	<div class="uniform">
