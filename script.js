@@ -71,114 +71,54 @@ function Click(){
 }
 var duplalepesa = false;
 function duplalepesf(c){
-  console.log(1);
-  if(duplalepes[c] && duplalepesa != true){
-    duplalepesa =  true;
-    document.getElementById("dupla"+c).style.borderColor ="gold";
+  if(duplalepes[c] && duplalepesa != true){duplalepesa =  true;document.getElementById("dupla"+c).style.borderColor ="gold";
   }else if(duplalepes[c]){
-    duplalepesa = false;
-    document.getElementById("dupla"+c).style.borderColor ="lime";
-  }
+    duplalepesa = false;document.getElementById("dupla"+c).style.borderColor ="lime";}
 }
-var jokerl = false;
-var pnumber;
+var jokerl = false;var pnumber;
 function jokerlepes(num){
   var button = document.getElementById("joker"+num);
-  if(joker[num] && jokerl !=true){
-    jokerl = true;
-    button.style.border = "2px solid gold"
-    pnumber = num;
-  }else if(joker[num]){
-    jokerl = false
-    button.style.border = "2px solid lime"
-  }
+  if(joker[num] && jokerl !=true){jokerl = true;button.style.border = "2px solid gold";pnumber = num;
+  }else if(joker[num]){jokerl = falsebutton.style.border = "2px solid lime"}
 }
-var FeherLeszamol;
-var FeketeLeszamol;
+var FeherLeszamol;var FeketeLeszamol;
 function Lepes(){
-  lasthover.classList = selected.classList;
-  selected.classList = "piece";
-  selected.innerHTML = "";
-  lasthover.classList.remove("selected");
-  var iy = selected.id.split(":")
-  var iy2 = lasthover.id.split(":");
-  if(document.getElementById('DView').value == "3D"){
-    lasthover.innerHTML = "<img src="+table[iy[0]][iy[1]].img+">";
-  }
-  else{
-    lasthover.innerHTML = table[iy[0]][iy[1]].code;
-  }
-  table[iy2[0]][iy2[1]] = table[iy[0]][iy[1]];
-  table[iy[0]][iy[1]] = undefined;
+  lasthover.classList = selected.classList;selected.classList = "piece";lasthover.classList.remove("selected");
+  var iy = selected.id.split(":");var iy2 = lasthover.id.split(":");
+  lasthover.innerHTML = selected.innerHTML;selected.innerHTML = "";
+  table[iy2[0]][iy2[1]] = table[iy[0]][iy[1]];table[iy[0]][iy[1]] = undefined;
   for (let i = 0; i < possibles.length; i++) {
-    document.getElementById(possibles[i]).classList.remove("possible");
-    document.getElementById(possibles[i]).classList.remove("attack");
+    document.getElementById(possibles[i]).classList.remove("possible");document.getElementById(possibles[i]).classList.remove("attack");
   }
   if (nextstep == 0 && !duplalepesa) {
     nextstep = 1;
-    if(ido == 1){
-      clearInterval(FeketeLeszamol);
-      FeherLeszamol = setInterval(IdoMegy,1000,'0');
-    }
-    LepesKinyil('feher');
-    KorKiir();
+    if(ido == 1){clearInterval(FeketeLeszamol);FeherLeszamol = setInterval(IdoMegy,1000,'0');}
+    LepesKinyil('feher');KorKiir();
   }else if(!duplalepesa){
     nextstep = 0;
-    if(ido == 1){
-      clearInterval(FeherLeszamol);
-      FeketeLeszamol = setInterval(IdoMegy,1000,'1');
-    }
+    if(ido == 1){clearInterval(FeherLeszamol);FeketeLeszamol = setInterval(IdoMegy,1000,'1');}
     LepesKinyil('fekete');
   }
-  if(duplalepesa){
-    duplalepes[nextstep] = false;
-    duplalepesa = false;
-    document.getElementById("dupla"+nextstep).style.borderColor ="red";
-  }
+  if(duplalepesa){duplalepes[nextstep] = false;duplalepesa = false;document.getElementById("dupla"+nextstep).style.borderColor ="red";}
   if (iy2[0] == 11 || iy2[0] == 0) {
-    if(lasthover.classList.contains("forditva")){
-      lasthover.classList.remove("forditva");
-    }else{
-      lasthover.classList.add("forditva");
-    }
+    if(lasthover.classList.contains("forditva")){lasthover.classList.remove("forditva");
+    }else{lasthover.classList.add("forditva");}
   }
-  if(jokerl){
-    jokerl = false;
-    joker[pnumber] = false;
-    document.getElementById("joker"+pnumber).style.borderColor = "red"
-  }
-  selected = null;
-  possibles = [];
+  if(jokerl){jokerl = false;joker[pnumber] = false;document.getElementById("joker"+pnumber).style.borderColor = "red"}
+  selected = null;possibles = [];
 }
 var possibles = new Array();
 function Possiblesteps(){
   if (possibles != undefined) {    
     for (let i = 0; i < possibles.length; i++) {
-      document.getElementById(possibles[i]).classList.remove("possible");
-      document.getElementById(possibles[i]).classList.remove("attack");
+      document.getElementById(possibles[i]).classList.remove("possible");document.getElementById(possibles[i]).classList.remove("attack");
     }
     possibles = new Array();
   }
-  var iy = selected.id.split(':');
-  var type = selected.classList[2];
+  var iy = selected.id.split(':');var type = selected.classList[2];
   if(jokerl){
-    lepesek(0,12,1,selected.id.split(':'),0,-1);
-    lepesek(0,8,1,selected.id.split(':'),-1,0);
-    lepesek(0,8,1,selected.id.split(':'),0,1);
-    lepesek(0,12,1,selected.id.split(':'),1,0);
-    lepesek(0,8,1,selected.id.split(':'),1,1);
-    lepesek(0,8,1,selected.id.split(':'),-1,-1);
-    lepesek(0,8,1,selected.id.split(':'),1,-1);
-    lepesek(0,8,1,selected.id.split(':'),-1,1);
-    iy = selected.id.split(':');
-    horse([parseInt(iy[0])+2,parseInt(iy[1])+1]);
-    horse([parseInt(iy[0])+2,parseInt(iy[1])-1]);
-    horse([parseInt(iy[0])+1,parseInt(iy[1])+2]);
-    horse([parseInt(iy[0])-1,parseInt(iy[1])+2]);
-    horse([parseInt(iy[0])-2,parseInt(iy[1])+1]);
-    horse([parseInt(iy[0])-2,parseInt(iy[1])-1]);
-    horse([parseInt(iy[0])+1,parseInt(iy[1])-2]);
-    horse([parseInt(iy[0])-1,parseInt(iy[1])-2]);
+    lepesek(selected.id.split(':'),[[12,0,1],[12,0,-1],[8,1,0],[8,-1,0],[8,1,1],[8,-1,-1],[8,1,-1],[8,-1,1]]);
+    iy = selected.id.split(':');var v1 =parseInt(iy[0]);var v2 = parseInt(iy[1]);horse([[v1+2,v2+1],[v1+2,v2-1],[v1+1,v2+2],[v1-1,v2+2],[v1-2,v2+1],[v1-2,v2-1],[v1+1,v2-2],[v1-1,v2-2],]);
     }else if (type == "PAWN") {
     for (let i = 0; i < 3; i++) {
       if (parseInt(iy[0])-1 >-1 && selected.classList[1] == "WHITE" && !selected.classList.contains("forditva") || selected.classList[1] == "BLACK" && selected.classList.contains("forditva")) {iy[0] = parseInt(iy[0])-1;
@@ -196,78 +136,41 @@ function Possiblesteps(){
         possibles.push((parseInt(iy[0])-1)+":"+(parseInt(iy[1])-1));document.getElementById((parseInt(iy[0])-1)+":"+(parseInt(iy[1])-1)).classList.add("attack");}
       if ((parseInt(iy[0])-1)>-1 && (parseInt(iy[1])+1)<8 && document.getElementById((parseInt(iy[0])-1)+":"+(parseInt(iy[1])+1)).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]) {
         possibles.push((parseInt(iy[0])-1)+":"+(parseInt(iy[1])+1));document.getElementById((parseInt(iy[0])-1)+":"+(parseInt(iy[1])+1)).classList.add("attack");}}
-  }else if(type == "KING"){
-    lepesek(0,2,1,selected.id.split(':'),0,-1);
-    lepesek(0,2,1,selected.id.split(':'),-1,0);
-    lepesek(0,2,1,selected.id.split(':'),0,1);
-    lepesek(0,2,1,selected.id.split(':'),1,0);
-    lepesek(0,2,1,selected.id.split(':'),1,1);
-    lepesek(0,2,1,selected.id.split(':'),-1,-1);
-    lepesek(0,2,1,selected.id.split(':'),1,-1);
-    lepesek(0,2,1,selected.id.split(':'),-1,1);
-  }else if(type == "QUEEN"){
-    lepesek(0,12,1,selected.id.split(':'),0,-1);
-    lepesek(0,8,1,selected.id.split(':'),-1,0);
-    lepesek(0,12,1,selected.id.split(':'),0,1);
-    lepesek(0,8,1,selected.id.split(':'),1,0);
-    lepesek(0,8,1,selected.id.split(':'),1,1);
-    lepesek(0,8,1,selected.id.split(':'),-1,-1);
-    lepesek(0,8,1,selected.id.split(':'),1,-1);
-    lepesek(0,8,1,selected.id.split(':'),-1,1);
-  }else if(type == "ROOK"){
-    lepesek(0,12,1,selected.id.split(':'),0,-1);
-    lepesek(0,12,1,selected.id.split(':'),0,1);
-    lepesek(0,8,1,selected.id.split(':'),1,0);
-    lepesek(0,8,1,selected.id.split(':'),-1,0);
-  }else if(type =="BISHOP"){
-    lepesek(0,8,1,selected.id.split(':'),1,1);
-    lepesek(0,8,1,selected.id.split(':'),-1,-1);
-    lepesek(0,8,1,selected.id.split(':'),1,-1);
-    lepesek(0,8,1,selected.id.split(':'),-1,1);
-  }else if(type == "HORSE"){
-    iy = selected.id.split(':');
-    horse([parseInt(iy[0])+2,parseInt(iy[1])+1]);
-    horse([parseInt(iy[0])+2,parseInt(iy[1])-1]);
-    horse([parseInt(iy[0])+1,parseInt(iy[1])+2]);
-    horse([parseInt(iy[0])-1,parseInt(iy[1])+2]);
-    horse([parseInt(iy[0])-2,parseInt(iy[1])+1]);
-    horse([parseInt(iy[0])-2,parseInt(iy[1])-1]);
-    horse([parseInt(iy[0])+1,parseInt(iy[1])-2]);
-    horse([parseInt(iy[0])-1,parseInt(iy[1])-2]);
-  }
+  }else if(type == "KING"){lepesek(selected.id.split(':'),[[2,0,1],[2,0,-1],[2,1,0],[2,-1,0],[2,1,1],[2,-1,-1],[2,1,-1],[2,-1,1]]);
+  }else if(type == "QUEEN"){lepesek(selected.id.split(':'),[[12,0,1],[12,0,-1],[8,1,0],[8,-1,0],[8,1,1],[8,-1,-1],[8,1,-1],[8,-1,1]]);
+  }else if(type == "ROOK"){lepesek(selected.id.split(':'),[[12,0,1],[12,0,-1],[8,1,0],[8,-1,0]]);
+  }else if(type =="BISHOP"){lepesek(selected.id.split(':'),[[8,1,1],[8,-1,-1],[8,1,-1],[8,-1,1]]);
+  }else if(type == "HORSE"){var v1 =parseInt(iy[0]);var v2 = parseInt(iy[1]);horse([[v1+2,v2+1],[v1+2,v2-1],[v1+1,v2+2],[v1-1,v2+2],[v1-2,v2+1],[v1-2,v2-1],[v1+1,v2-2],[v1-1,v2-2],]);}
 }
-function horse(iy){
-  if (parseInt(iy[0]) <12 && parseInt(iy[1]) >-1 && parseInt(iy[0]) >-1 && parseInt(iy[1]) <8) {   
-    possibles.push(iy[0]+":"+iy[1]);
-    if(document.getElementById(iy[0]+":"+iy[1]).classList.length != 1 && document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i == nextstep_p[nextstep])[0] || document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){
-      if(document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){document.getElementById(iy[0]+":"+iy[1]).classList.add("attack");}return;}
-    document.getElementById(iy[0]+":"+iy[1]).classList.add("possible");
-  }
-}
-function lepesek(imin,imax,dir,iy,ic,yc){
-  for (let i = imin; i < imax; i+=dir) {
-    if (parseInt(iy[0])+(1*yc) <12 && parseInt(iy[1])+(1*ic) >-1 && parseInt(iy[0])+(1*yc) >-1 && parseInt(iy[1])+(1*ic) <8) {   
-      iy[1] = parseInt(iy[1])+(1*ic);iy[0] = parseInt(iy[0])+(1*yc);possibles.push(iy[0]+":"+iy[1]);
+function horse(data){
+  for (let i = 0; i < 8; i++) {
+    var iy = data[i];
+    if (parseInt(iy[0]) <12 && parseInt(iy[1]) >-1 && parseInt(iy[0]) >-1 && parseInt(iy[1]) <8) {   
+      possibles.push(iy[0]+":"+iy[1]);
       if(document.getElementById(iy[0]+":"+iy[1]).classList.length != 1 && document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i == nextstep_p[nextstep])[0] || document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){
-        if(document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){document.getElementById(iy[0]+":"+iy[1]).classList.add("attack");}break;}
+        if(document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){document.getElementById(iy[0]+":"+iy[1]).classList.add("attack");}return;}
       document.getElementById(iy[0]+":"+iy[1]).classList.add("possible");
     }
   }
 }
+function lepesek(pos,data){
+  for (let index = 0; index < data.length; index++) {    
+    let iy = Object.assign({},pos);let imax = data[index][0];let ic = data[index][1];let yc = data[index][2];
+    for (let i = 0; i < imax; i++) {
+      if (parseInt(iy[0])+(1*yc) <12 && parseInt(iy[1])+(1*ic) >-1 && parseInt(iy[0])+(1*yc) >-1 && parseInt(iy[1])+(1*ic) <8) {   
+        iy[1] = parseInt(iy[1])+(1*ic);iy[0] = parseInt(iy[0])+(1*yc);possibles.push(iy[0]+":"+iy[1]);
+        if(document.getElementById(iy[0]+":"+iy[1]).classList.length != 1 && document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i == nextstep_p[nextstep])[0] || document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){
+          if(document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){document.getElementById(iy[0]+":"+iy[1]).classList.add("attack");}break;}
+        document.getElementById(iy[0]+":"+iy[1]).classList.add("possible");
+      }
+    }
+  }
+}
 function d3general(){
-  document.getElementById('QualityEnable').style.opacity = "1";
-  document.getElementById('QualityEnable').style.cursor = "pointer";
-  document.getElementById('QualityEnable').setAttribute("onclick","QualityLenyil()");
-  document.getElementById("board").className = "board d3";
+  document.getElementById('QualityEnable').style.opacity = "1";document.getElementById('QualityEnable').style.cursor = "pointer";document.getElementById('QualityEnable').setAttribute("onclick","QualityLenyil()");document.getElementById("board").className = "board d3";
 }
 function d2general(){
-  if(document.getElementById('QualityEnable').style.opacity == "1"){
-    document.getElementById('QualityEnable').classList.remove("EnableClass");
-    document.getElementById('QualityEnable').style.opacity = "0";
-    document.getElementById('QualityEnable').style.cursor = "pointer";
-    lenyil = 1;
-    QualityLenyil();
-  }
+  if(document.getElementById('QualityEnable').style.opacity == "1"){document.getElementById('QualityEnable').classList.remove("EnableClass");document.getElementById('QualityEnable').style.opacity = "0";document.getElementById('QualityEnable').style.cursor = "pointer";lenyil = 1;QualityLenyil();}
   document.getElementById("board").className = "board d2";
 }
 function general(){
@@ -275,14 +178,10 @@ function general(){
     for (let j = 0; j < 8; j++) {
       board.innerHTML+= `<div onclick="Click()" class="piece" id="${i}:${j}" style="--v:${i};--h:${j};"></div>`;
       if (table[i][j] != undefined) {        
-        var div = document.getElementById(i+":"+j);
-        let img = document.createElement("img");
+        var div = document.getElementById(i+":"+j);let img = document.createElement("img");
         if(i<2){div.classList.add("BLACK");img.src="babuk/BLACK"+table[i][j].name+".png";}
-        else{img.src="babuk/"+table[i][j].name+".png";}
-        div.classList.add(table[i][j].name);
-        img.classList.add("figures")
-        div.appendChild(img);
-        div.innerHTML+=table[i][j].code;
+        else{div.classList.add("WHITE");img.src="babuk/"+table[i][j].name+".png";}
+        div.classList.add(table[i][j].name);img.classList.add("figures");div.appendChild(img);div.innerHTML+=table[i][j].code;
       }
     }
   }
@@ -297,165 +196,70 @@ function Mouse(){
     var element = document.elementFromPoint(e.clientX, e.clientY).closest('.piece');
     if (element != null && element != lasthover) {
       lasthover.classList.remove("hover");
-      if (element != null) {
-        lasthover = element;
+      if (element != null) {lasthover = element;
       }else{
         element = document.elementsFromPoint(e.clientX, e.clientY).filter(i => i.classList.contains('.piece'));
-        if (element.length == 1) {
-          lasthover = element[0];
-        }
+        if (element.length == 1) {lasthover = element[0];}
       }
-      if (element.length != 0 && (element.classList.contains(nextstep_p[nextstep]) || possibles!= undefined && possibles.includes(element.id))) {
-        element.classList.add("hover");
-      }
+      if (element.length != 0 && (element.classList.contains(nextstep_p[nextstep]) || possibles!= undefined && possibles.includes(element.id))) { element.classList.add("hover");}
     }
     setTimeout(function(){Mouse()},0)
   }, {once: true})
 }
-var ido = 0;
-var kor = 1;
-var CurrentKor = 0;
-var LepesekList = [];
-
+var ido = 0;var kor = 1;var CurrentKor = 0;var LepesekList = [];
 function IdoEnable(){
-  if(ido == 0){
-    ido = 1;
-    document.getElementById("IdoAddPerc").style.opacity = "1";
-    document.getElementById("IdoAdMasodPerc").style.opacity = "1";
-    document.getElementById("IdoAddPercLabel").style.opacity = "1";
-    document.getElementById("IdoAdMasodPercLabel").style.opacity = "1";
-    IdoValtozik();
-  }
-  else{
-    ido = 0;
-    document.getElementById("IdoAddPerc").style.opacity = "0";
-    document.getElementById("IdoAdMasodPerc").style.opacity = "0";
-    document.getElementById("IdoAddPercLabel").style.opacity = "0";
-    document.getElementById("IdoAdMasodPercLabel").style.opacity = "0";
-    document.getElementById("IdoAddPerc").value = "0";
-    document.getElementById("IdoAdMasodPerc").value = "1";
-    LepesekList = [];
-    document.getElementById('WhiteTimer').innerHTML = "";
-    document.getElementById('BlackTimer').innerHTML = "";
-  }
+  if(ido == 0){ido = 1;document.getElementById("IdoAddPerc").style.opacity = "1";document.getElementById("IdoAdMasodPerc").style.opacity = "1";document.getElementById("IdoAddPercLabel").style.opacity = "1";document.getElementById("IdoAdMasodPercLabel").style.opacity = "1";IdoValtozik();}
+  else{ido = 0;document.getElementById("IdoAddPerc").style.opacity = "0";document.getElementById("IdoAdMasodPerc").style.opacity = "0";document.getElementById("IdoAddPercLabel").style.opacity = "0";document.getElementById("IdoAdMasodPercLabel").style.opacity = "0";document.getElementById("IdoAddPerc").value = "0";document.getElementById("IdoAdMasodPerc").value = "1";LepesekList = [];document.getElementById('WhiteTimer').innerHTML = "";document.getElementById('BlackTimer').innerHTML = "";}
 }
-
 function IdoValtozik(){
   if(ido == 1){
-    LepesekList[0] = {perc:document.getElementById("IdoAddPerc").value, mperc: document.getElementById("IdoAdMasodPerc").value};
-    LepesekList[1] ={perc:document.getElementById("IdoAddPerc").value, mperc: document.getElementById("IdoAdMasodPerc").value};
-    if(document.getElementsByClassName('WhitePlayerOpen').length > 0){
-      IdoKiir('0');
-    }else{
-      IdoKiir('0');
-    }
+    LepesekList[0] = {perc:document.getElementById("IdoAddPerc").value, mperc: document.getElementById("IdoAdMasodPerc").value};LepesekList[1] ={perc:document.getElementById("IdoAddPerc").value, mperc: document.getElementById("IdoAdMasodPerc").value};
+    if(document.getElementsByClassName('WhitePlayerOpen').length > 0){IdoKiir('0');
+    }else{IdoKiir('0');}
   }
 }
-
 function KorokSzamaFV(div){
   kor = div.value;
 }
-var Quality = "low";
-var lenyil = 0;
+var Quality = "low";var lenyil = 0;
 function QualityLenyil(){
-  if(lenyil == 0){
-    lenyil = 1;
-    document.getElementById('QualityEnable').classList.add("EnableClass");
-    document.getElementById('low').classList.add("QualityButtonsLenyil");
-    document.getElementById('medium').classList.add("QualityButtonsLenyil");
-    document.getElementById('high').classList.add("QualityButtonsLenyil");
-    setTimeout(GombokMegjelen,500);
-    document.getElementById(Quality).classList.add("CurrentQuality");
-  }
-  else{
-    lenyil = 0;
-    document.getElementById('low').classList.remove("QualityButtonsLMegjelen");
-    document.getElementById('medium').classList.remove("QualityButtonsLMegjelen");
-    document.getElementById('high').classList.remove("QualityButtonsLMegjelen");
-    document.getElementById('QualityEnable').style.cursor = "default";
-    setTimeout(GombokEltuntet,500);
-  }
+  if(lenyil == 0){lenyil = 1;document.getElementById('QualityEnable').classList.add("EnableClass");document.getElementById('low').classList.add("QualityButtonsLenyil");document.getElementById('medium').classList.add("QualityButtonsLenyil");document.getElementById('high').classList.add("QualityButtonsLenyil");setTimeout(GombokMegjelen,500);document.getElementById(Quality).classList.add("CurrentQuality");}
+  else{lenyil = 0;document.getElementById('low').classList.remove("QualityButtonsLMegjelen");document.getElementById('medium').classList.remove("QualityButtonsLMegjelen");document.getElementById('high').classList.remove("QualityButtonsLMegjelen");document.getElementById('QualityEnable').style.cursor = "default";setTimeout(GombokEltuntet,500);}
 }
-
 function GombokMegjelen(){
-  document.getElementById('low').classList.add("QualityButtonsLMegjelen");
-  document.getElementById('medium').classList.add("QualityButtonsLMegjelen");
-  document.getElementById('high').classList.add("QualityButtonsLMegjelen");
+  document.getElementById('low').classList.add("QualityButtonsLMegjelen");document.getElementById('medium').classList.add("QualityButtonsLMegjelen");document.getElementById('high').classList.add("QualityButtonsLMegjelen");
 }
-
 function GombokEltuntet(){
-  document.getElementById('low').classList.remove("QualityButtonsLenyil");
-  document.getElementById('medium').classList.remove("QualityButtonsLenyil");
-  document.getElementById('high').classList.remove("QualityButtonsLenyil");
-  document.getElementById('QualityEnable').classList.remove("EnableClass");
+  document.getElementById('low').classList.remove("QualityButtonsLenyil");document.getElementById('medium').classList.remove("QualityButtonsLenyil");document.getElementById('high').classList.remove("QualityButtonsLenyil");document.getElementById('QualityEnable').classList.remove("EnableClass");
 }
-
 function qualityc(value){
-  document.getElementById("main").classList = "main-elements "+value;
-  Quality = value;
-  document.getElementById('low').classList.remove("CurrentQuality");
-  document.getElementById('medium').classList.remove("CurrentQuality");
-  document.getElementById('high').classList.remove("CurrentQuality");
-  document.getElementById(Quality).classList.add("CurrentQuality");
+  document.getElementById("main").classList = "main-elements "+value;Quality = value;document.getElementById('low').classList.remove("CurrentQuality");document.getElementById('medium').classList.remove("CurrentQuality");document.getElementById('high').classList.remove("CurrentQuality");document.getElementById(Quality).classList.add("CurrentQuality");
 };
-
 function LepesKinyil(value){
-  if(value == 'feher'){
-    document.getElementById("BlackPlayer").classList.remove('BlackPlayerOpen');
-    document.getElementById("WhitePlayer").classList.remove('WhitePlayerClose');
-    document.getElementById("WhitePlayer").classList.add('WhitePlayerOpen');
-    document.getElementById("BlackPlayer").classList.add('BlackPlayerClose');
-    IdoKiir('0');
-  }
-  else if(value == 'fekete'){
-    document.getElementById("BlackPlayer").classList.add('BlackPlayerOpen');
-    document.getElementById("WhitePlayer").classList.add('WhitePlayerClose');
-    document.getElementById("WhitePlayer").classList.remove('WhitePlayerOpen');
-    document.getElementById("BlackPlayer").classList.remove('BlackPlayerClose');
-    IdoKiir('0');
-  }
+  if(value == 'feher'){document.getElementById("BlackPlayer").classList.remove('BlackPlayerOpen');document.getElementById("WhitePlayer").classList.remove('WhitePlayerClose');document.getElementById("WhitePlayer").classList.add('WhitePlayerOpen');document.getElementById("BlackPlayer").classList.add('BlackPlayerClose');IdoKiir('0');}
+  else if(value == 'fekete'){document.getElementById("BlackPlayer").classList.add('BlackPlayerOpen');document.getElementById("WhitePlayer").classList.add('WhitePlayerClose');document.getElementById("WhitePlayer").classList.remove('WhitePlayerOpen');document.getElementById("BlackPlayer").classList.remove('BlackPlayerClose');IdoKiir('0');}
 }
-
 function IdoKiir(value){
   if(ido == 1){
     let Idik = ['WhiteTimer','BlackTimer']
-    if(LepesekList[Number(value)].mperc.length == 1 || LepesekList[Number(value)].mperc < 10){
-      document.getElementById(Idik[Number(value)]).innerHTML = "<p>"+LepesekList[Number(value)].perc+":0"+LepesekList[Number(value)].mperc+"</p>";
-    }else{
-      document.getElementById(Idik[Number(value)]).innerHTML = "<p>"+LepesekList[Number(value)].perc+":"+LepesekList[Number(value)].mperc+"</p>";
-    }
+    if(LepesekList[Number(value)].mperc.length == 1 || LepesekList[Number(value)].mperc < 10){document.getElementById(Idik[Number(value)]).innerHTML = "<p>"+LepesekList[Number(value)].perc+":0"+LepesekList[Number(value)].mperc+"</p>";
+    }else{document.getElementById(Idik[Number(value)]).innerHTML = "<p>"+LepesekList[Number(value)].perc+":"+LepesekList[Number(value)].mperc+"</p>";}
   }
 } 
-
 function IdoMegy(value){
   if(ido == 1){
-    let masodperc = Number(LepesekList[Number(value)].perc) * 60 + Number(LepesekList[Number(value)].mperc);
-    masodperc = masodperc - 1;
-    if(masodperc >-1){
-      LepesekList[Number(value)].perc = Math.floor(masodperc/60);
-      LepesekList[Number(value)].mperc = masodperc%60;
-      IdoKiir(Number(value));
-    }else{
-      JatekVeg(value);
-    }
+    let masodperc = Number(LepesekList[Number(value)].perc) * 60 + Number(LepesekList[Number(value)].mperc);masodperc = masodperc - 1;
+    if(masodperc >-1){LepesekList[Number(value)].perc = Math.floor(masodperc/60);LepesekList[Number(value)].mperc = masodperc%60;IdoKiir(Number(value));
+    }else{JatekVeg(value);}
   }
 }
-
 function KorKiir(){
-  if(CurrentKor != kor){
-    document.getElementById('KorSzamlalo').innerHTML = "<p>"+(CurrentKor++)+" / "+kor+"</p>";
-  }else{
-    JatekVeg('Letelt');
-  }
+  if(CurrentKor != kor){document.getElementById('KorSzamlalo').innerHTML = "<p>"+(CurrentKor++)+" / "+kor+"</p>";
+  }else{JatekVeg('Letelt');}
 }
-
 function Inditas(){
-  setTimeout(general,800);
-  setTimeout(function(){Mouse()},1000)
-  EltuntetMindent();
-  setTimeout(Elindit,400);
+  setTimeout(general,800);setTimeout(function(){Mouse()},1000);EltuntetMindent();setTimeout(Elindit,400);
 }
-
 function EltuntetMindent(){
   let Idik = ['WarningSignh1','WarningSignh3','KorokLabel','KorokAdd','Ido','IdoLabel','IdoAddPerc','IdoAdMasodPerc','Inditas','IdoAddPercLabel','IdoAdMasodPercLabel'];
   Idik.forEach(elem => {
@@ -463,62 +267,34 @@ function EltuntetMindent(){
   });
   setTimeout(InditasDivEltuntet,500);
 }
-
 function InditasDivEltuntet(){
   document.getElementById('StarterDiv').style.opacity = "0";
   document.getElementById('StarterDiv').style.zIndex = "-1";
 }
-
 function Elindit(){
   document.getElementById("BlackPlayer").classList.remove('WhitePlayerClose');document.getElementById("WhitePlayer").classList.remove('BlackPlayerClose');document.getElementById('ViewSide').style.opacity = "1";document.getElementById('ViewSide').setAttribute('onclick','bal()');document.getElementById('DView').style.opacity = "1";document.getElementById('DView').setAttribute('onclick','d3()');document.getElementById('DView').style.cursor = "pointer";document.getElementById('ViewSide').style.cursor = "pointer";document.getElementById('KorSzamlalo').style.opacity = "1";document.getElementById('QualityEnable').style.opacity = "0";document.getElementById('QualityEnable').style.cursor = "default";document.getElementById('QualityEnable').removeAttribute("onclick");document.getElementById("WhitePlayer").classList.add('WhitePlayerOpen');
-  IdoKiir('0');
-  KorKiir();
-  setTimeout(TimerInditas,400);
+  IdoKiir('0');KorKiir();setTimeout(TimerInditas,400);
 }
-
 function TimerInditas(){
-  if(ido == 1){
-    clearInterval(FeketeLeszamol);
-    FeherLeszamol = setInterval(IdoMegy,1000,'0');
-  }
+  if(ido == 1){clearInterval(FeketeLeszamol);FeherLeszamol = setInterval(IdoMegy,1000,'0');}
 }
-
 function JatekVeg(value){
-  clearInterval(FeketeLeszamol);
-  clearInterval(FeherLeszamol);
+  clearInterval(FeketeLeszamol);clearInterval(FeherLeszamol);
   document.getElementById("BlackPlayer").classList.remove('BlackPlayerOpen');document.getElementById("WhitePlayer").classList.remove('WhitePlayerOpen');document.getElementById("WhitePlayer").classList.add('WhitePlayerClose');document.getElementById("BlackPlayer").classList.add('BlackPlayerClose');document.getElementById('ViewSide').style.opacity = "0";document.getElementById('ViewSide').removeAttribute('onclick');document.getElementById('DView').style.opacity = "0";document.getElementById('DView').removeAttribute('onclick');document.getElementById('DView').style.cursor = "default";document.getElementById('ViewSide').style.cursor = "default";document.getElementById('KorSzamlalo').style.opacity = "0";document.getElementById('QualityEnable').style.opacity = "0";document.getElementById('QualityEnable').style.cursor = "default";document.getElementById('QualityEnable').removeAttribute("onclick");
   if(value == '0' || value == '1'){
-    document.getElementById('Jategveg').style.opacity = "1";
-    document.getElementById('Jategveg').style.zIndex = "10";
-    if(value == "0"){
-      document.getElementById('JatekVegDiv').innerHTML = "<h1>A Fekete játékos nyert</h1>";
-    }else{
-      document.getElementById('JatekVegDiv').innerHTML = "<h1>A Fehér játékos nyert</h1>";
-    }
+    document.getElementById('Jategveg').style.opacity = "1";document.getElementById('Jategveg').style.zIndex = "10";
+    if(value == "0"){document.getElementById('JatekVegDiv').innerHTML = "<h1>A Fekete játékos nyert</h1>";
+    }else{document.getElementById('JatekVegDiv').innerHTML = "<h1>A Fehér játékos nyert</h1>";}
   }else if("Letelt"){
-    if(point[0] > point[1]){
-      document.getElementById('JatekVegDiv').innerHTML = "<h1>A Fekete játékos nyert</h1>";
-    }else{
-      document.getElementById('JatekVegDiv').innerHTML = "<h1>A Fehér játékos nyert</h1>";
-    }
+    if(point[0] > point[1]){document.getElementById('JatekVegDiv').innerHTML = "<h1>A Fekete játékos nyert</h1>";
+    }else{document.getElementById('JatekVegDiv').innerHTML = "<h1>A Fehér játékos nyert</h1>";}
   }
 }
-
 function Restart(){
-  ido = 0;
-  document.getElementById('Jategveg').style.opacity = "0";document.getElementById('Jategveg').style.zIndex = "-1";document.getElementById('Ido').checked = false;document.getElementById("IdoAddPerc").style.opacity = "0";document.getElementById("IdoAdMasodPerc").style.opacity = "0";document.getElementById("IdoAddPercLabel").style.opacity = "0";document.getElementById("IdoAdMasodPercLabel").style.opacity = "0";document.getElementById("IdoAddPerc").value = "0";document.getElementById("IdoAdMasodPerc").value = "1";document.getElementById('WhiteTimer').innerHTML = "";document.getElementById('BlackTimer').innerHTML = "";
-  kor = 1;
-  CurrentKor = 0;
-  LepesekList = [];
-  lenyil = 0;
-  nextstep = 1;
-  point = [0,0];
-  setTimeout(Ujraindit,400);
+  ido = 0;document.getElementById('Jategveg').style.opacity = "0";document.getElementById('Jategveg').style.zIndex = "-1";document.getElementById('Ido').checked = false;document.getElementById("IdoAddPerc").style.opacity = "0";document.getElementById("IdoAdMasodPerc").style.opacity = "0";document.getElementById("IdoAddPercLabel").style.opacity = "0";document.getElementById("IdoAdMasodPercLabel").style.opacity = "0";document.getElementById("IdoAddPerc").value = "0";document.getElementById("IdoAdMasodPerc").value = "1";document.getElementById('WhiteTimer').innerHTML = "";document.getElementById('BlackTimer').innerHTML = "";kor = 1;CurrentKor = 0;LepesekList = [];lenyil = 0;nextstep = 1;point = [0,0];setTimeout(Ujraindit,400);
 }
-
 function Ujraindit(){
-  document.getElementById('StarterDiv').style.opacity = "1";
-  document.getElementById('StarterDiv').style.zIndex = "10";
+  document.getElementById('StarterDiv').style.opacity = "1";document.getElementById('StarterDiv').style.zIndex = "10";
   let Idik = ['WarningSignh1','WarningSignh3','KorokLabel','KorokAdd','Ido','IdoLabel','Inditas'];
   Idik.forEach(elem => {
     document.getElementById(elem).style.opacity = "1";

@@ -1048,3 +1048,11 @@ display: none;
 #BlackTimer{
     color: black;
 }
+
+.d2 .reusable-rect,.d2 .reusable-trapezoid,.d2 .piece-crown{
+    display: none;
+}
+
+.d3 .figures{
+    display: none;
+}
