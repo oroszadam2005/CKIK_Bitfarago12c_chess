@@ -853,13 +853,13 @@ display: none;
 
 .WhitePlayerButtons input{
     background-color: rgb(49, 49, 49);
-    border: 2px solid gray;
+    border: 2px solid lime;
     color: gray;
 }
 
 .BlackPlayerButtons input{
     background-color: rgb(100, 100, 100);
-    border: 2px solid gray;
+    border: 2px solid lime;
     color: gray;
 }
 
