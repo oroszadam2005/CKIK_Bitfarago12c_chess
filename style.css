@@ -697,7 +697,7 @@ display: none;
 
 #FirstColumn{
     display: flex;
-    width: fit-content;
+    width: 100%;
     margin-left: -1vw;
     z-index: 2;
     position: relative;
@@ -716,9 +716,9 @@ display: none;
     width: 10vw;
     height: 2.5vw;
     position: absolute;
-    top: 1%;
-    left: 50%;
-    transform: translate(-50%, 0);
+    top: 50%;
+    left: 51%;
+    transform: translate(-50%, -50%);
     transition: .4s;
     border-radius: .4vw;
     opacity: 0;
