@@ -597,7 +597,7 @@ transform:rotateX(90deg) translateZ(calc(var(--length) * -1));
 transform-origin:0% 0%;
 }
 .piece img{
-margin-left: 14px;
+margin-left: 12px;
 margin-top: 7px;
 width: 80%;
 cursor: pointer;
@@ -938,17 +938,8 @@ display: none;
     cursor: pointer;
     font-size: 1vw;
     transition: .7s;
-}
-
-.WhitePlayerButtons input{
     background-color: rgb(49, 49, 49);
-    border: 2px solid gray;
-    color: gray;
-}
-
-.BlackPlayerButtons input{
-    background-color: rgb(100, 100, 100);
-    border: 2px solid gray;
+    border: 2px solid lime;
     color: gray;
 }
 
