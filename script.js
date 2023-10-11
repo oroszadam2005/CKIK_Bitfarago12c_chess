@@ -445,7 +445,7 @@ function KorKiir(){
   if(CurrentKor != kor){
     document.getElementById('KorSzamlalo').innerHTML = "<p>"+(CurrentKor++)+" / "+kor+"</p>";
   }else{
-    JatekVeg('valami');
+    JatekVeg('Letelt');
   }
 }
 
@@ -490,6 +490,17 @@ function JatekVeg(value){
   if(value == '0' || value == '1'){
     document.getElementById('Jategveg').style.opacity = "1";
     document.getElementById('Jategveg').style.zIndex = "10";
+    if(value == "0"){
+      document.getElementById('JatekVegDiv').innerHTML = "<h1>A Fekete játékos nyert</h1>";
+    }else{
+      document.getElementById('JatekVegDiv').innerHTML = "<h1>A Fehér játékos nyert</h1>";
+    }
+  }else if("Letelt"){
+    if(point[0] > point[1]){
+      document.getElementById('JatekVegDiv').innerHTML = "<h1>A Fekete játékos nyert</h1>";
+    }else{
+      document.getElementById('JatekVegDiv').innerHTML = "<h1>A Fehér játékos nyert</h1>";
+    }
   }
 }
 

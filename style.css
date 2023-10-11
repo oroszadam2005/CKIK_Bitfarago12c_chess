@@ -769,14 +769,14 @@ display: none;
 }
 
 #KorokAdd, #IdoAddPerc, #IdoAdMasodPerc {
-    width: 1.5vw;
+    width: 2.5vw;
     margin-left: .2vw;
     padding: .3vw;
     border: 2px solid rgb(180, 180, 180);
     background-color: rgb(68, 68, 68);
     color: rgb(180, 180, 180);
     border-radius: .2vw;
-    font-size: .8vw;
+    font-size: 1.3vw;
     transition: .4s;
 }
 
@@ -871,7 +871,6 @@ display: none;
     border-color: gold;
     cursor: pointer;
 }
-
 
 .QualityButtonsLenyil{
     margin-top: .2vw !important;
@@ -984,12 +983,13 @@ display: none;
     transform: translate(-50%, -50%);
     border: 2px solid white;
     border-radius: .2vw;
-    height: 10vw;
-    width: 23vw;
+    height: auto;
+    width: auto;
     background-color: rgba(0, 0, 0, 0.8);
     opacity: 0;
     z-index: -1;
     transition: .4s;
+    padding: 1vw 2vw;
 }
 
 .Jategveg h1{
