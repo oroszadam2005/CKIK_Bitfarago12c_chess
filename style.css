@@ -623,7 +623,13 @@ display: none;
 --height: 36px;
 }
 
+.d2 .reusable-rect,.d2 .reusable-trapezoid,.d2 .piece-crown{
+    display: none;
+}
 
+.d3 .figures{
+    display: none;
+}
 .StarterDiv{
     position: absolute;
     top: 50%;

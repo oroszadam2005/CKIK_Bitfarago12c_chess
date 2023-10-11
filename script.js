@@ -98,16 +98,12 @@ var FeketeLeszamol;
 function Lepes(){
   lasthover.classList = selected.classList;
   selected.classList = "piece";
-  selected.innerHTML = "";
+  
   lasthover.classList.remove("selected");
   var iy = selected.id.split(":")
   var iy2 = lasthover.id.split(":");
-  if(document.getElementById('DView').value == "3D"){
-    lasthover.innerHTML = "<img src="+table[iy[0]][iy[1]].img+">";
-  }
-  else{
-    lasthover.innerHTML = table[iy[0]][iy[1]].code;
-  }
+    lasthover.innerHTML = selected.innerHTML;
+    selected.innerHTML = "";
   table[iy2[0]][iy2[1]] = table[iy[0]][iy[1]];
   table[iy[0]][iy[1]] = undefined;
   for (let i = 0; i < possibles.length; i++) {
@@ -162,23 +158,10 @@ function Possiblesteps(){
   var iy = selected.id.split(':');
   var type = selected.classList[2];
   if(jokerl){
-    lepesek(0,12,1,selected.id.split(':'),0,-1);
-    lepesek(0,8,1,selected.id.split(':'),-1,0);
-    lepesek(0,8,1,selected.id.split(':'),0,1);
-    lepesek(0,12,1,selected.id.split(':'),1,0);
-    lepesek(0,8,1,selected.id.split(':'),1,1);
-    lepesek(0,8,1,selected.id.split(':'),-1,-1);
-    lepesek(0,8,1,selected.id.split(':'),1,-1);
-    lepesek(0,8,1,selected.id.split(':'),-1,1);
+    lepesek(selected.id.split(':'),[[12,0,1],[12,0,-1],[8,1,0],[8,-1,0],[8,1,1],[8,-1,-1],[8,1,-1],[8,-1,1]]);
     iy = selected.id.split(':');
-    horse([parseInt(iy[0])+2,parseInt(iy[1])+1]);
-    horse([parseInt(iy[0])+2,parseInt(iy[1])-1]);
-    horse([parseInt(iy[0])+1,parseInt(iy[1])+2]);
-    horse([parseInt(iy[0])-1,parseInt(iy[1])+2]);
-    horse([parseInt(iy[0])-2,parseInt(iy[1])+1]);
-    horse([parseInt(iy[0])-2,parseInt(iy[1])-1]);
-    horse([parseInt(iy[0])+1,parseInt(iy[1])-2]);
-    horse([parseInt(iy[0])-1,parseInt(iy[1])-2]);
+    var v1 =parseInt(iy[0]);var v2 = parseInt(iy[1]);
+    horse([[v1+2,v2+1],[v1+2,v2-1],[v1+1,v2+2],[v1-1,v2+2],[v1-2,v2+1],[v1-2,v2-1],[v1+1,v2-2],[v1-1,v2-2],]);
     }else if (type == "PAWN") {
     for (let i = 0; i < 3; i++) {
       if (parseInt(iy[0])-1 >-1 && selected.classList[1] == "WHITE" && !selected.classList.contains("forditva") || selected.classList[1] == "BLACK" && selected.classList.contains("forditva")) {iy[0] = parseInt(iy[0])-1;
@@ -197,60 +180,39 @@ function Possiblesteps(){
       if ((parseInt(iy[0])-1)>-1 && (parseInt(iy[1])+1)<8 && document.getElementById((parseInt(iy[0])-1)+":"+(parseInt(iy[1])+1)).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]) {
         possibles.push((parseInt(iy[0])-1)+":"+(parseInt(iy[1])+1));document.getElementById((parseInt(iy[0])-1)+":"+(parseInt(iy[1])+1)).classList.add("attack");}}
   }else if(type == "KING"){
-    lepesek(0,2,1,selected.id.split(':'),0,-1);
-    lepesek(0,2,1,selected.id.split(':'),-1,0);
-    lepesek(0,2,1,selected.id.split(':'),0,1);
-    lepesek(0,2,1,selected.id.split(':'),1,0);
-    lepesek(0,2,1,selected.id.split(':'),1,1);
-    lepesek(0,2,1,selected.id.split(':'),-1,-1);
-    lepesek(0,2,1,selected.id.split(':'),1,-1);
-    lepesek(0,2,1,selected.id.split(':'),-1,1);
+    lepesek(selected.id.split(':'),[[2,0,1],[2,0,-1],[2,1,0],[2,-1,0],[2,1,1],[2,-1,-1],[2,1,-1],[2,-1,1]]);
   }else if(type == "QUEEN"){
-    lepesek(0,12,1,selected.id.split(':'),0,-1);
-    lepesek(0,8,1,selected.id.split(':'),-1,0);
-    lepesek(0,12,1,selected.id.split(':'),0,1);
-    lepesek(0,8,1,selected.id.split(':'),1,0);
-    lepesek(0,8,1,selected.id.split(':'),1,1);
-    lepesek(0,8,1,selected.id.split(':'),-1,-1);
-    lepesek(0,8,1,selected.id.split(':'),1,-1);
-    lepesek(0,8,1,selected.id.split(':'),-1,1);
+    lepesek(selected.id.split(':'),[[12,0,1],[12,0,-1],[8,1,0],[8,-1,0],[8,1,1],[8,-1,-1],[8,1,-1],[8,-1,1]]);
   }else if(type == "ROOK"){
-    lepesek(0,12,1,selected.id.split(':'),0,-1);
-    lepesek(0,12,1,selected.id.split(':'),0,1);
-    lepesek(0,8,1,selected.id.split(':'),1,0);
-    lepesek(0,8,1,selected.id.split(':'),-1,0);
+    lepesek(selected.id.split(':'),[[12,0,1],[12,0,-1],[8,1,0],[8,-1,0]]);
   }else if(type =="BISHOP"){
-    lepesek(0,8,1,selected.id.split(':'),1,1);
-    lepesek(0,8,1,selected.id.split(':'),-1,-1);
-    lepesek(0,8,1,selected.id.split(':'),1,-1);
-    lepesek(0,8,1,selected.id.split(':'),-1,1);
+    lepesek(selected.id.split(':'),[[8,1,1],[8,-1,-1],[8,1,-1],[8,-1,1]]);
   }else if(type == "HORSE"){
-    iy = selected.id.split(':');
-    horse([parseInt(iy[0])+2,parseInt(iy[1])+1]);
-    horse([parseInt(iy[0])+2,parseInt(iy[1])-1]);
-    horse([parseInt(iy[0])+1,parseInt(iy[1])+2]);
-    horse([parseInt(iy[0])-1,parseInt(iy[1])+2]);
-    horse([parseInt(iy[0])-2,parseInt(iy[1])+1]);
-    horse([parseInt(iy[0])-2,parseInt(iy[1])-1]);
-    horse([parseInt(iy[0])+1,parseInt(iy[1])-2]);
-    horse([parseInt(iy[0])-1,parseInt(iy[1])-2]);
+    var v1 =parseInt(iy[0]);var v2 = parseInt(iy[1]);
+    horse([[v1+2,v2+1],[v1+2,v2-1],[v1+1,v2+2],[v1-1,v2+2],[v1-2,v2+1],[v1-2,v2-1],[v1+1,v2-2],[v1-1,v2-2],]);
   }
 }
-function horse(iy){
-  if (parseInt(iy[0]) <12 && parseInt(iy[1]) >-1 && parseInt(iy[0]) >-1 && parseInt(iy[1]) <8) {   
-    possibles.push(iy[0]+":"+iy[1]);
-    if(document.getElementById(iy[0]+":"+iy[1]).classList.length != 1 && document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i == nextstep_p[nextstep])[0] || document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){
-      if(document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){document.getElementById(iy[0]+":"+iy[1]).classList.add("attack");}return;}
-    document.getElementById(iy[0]+":"+iy[1]).classList.add("possible");
-  }
-}
-function lepesek(imin,imax,dir,iy,ic,yc){
-  for (let i = imin; i < imax; i+=dir) {
-    if (parseInt(iy[0])+(1*yc) <12 && parseInt(iy[1])+(1*ic) >-1 && parseInt(iy[0])+(1*yc) >-1 && parseInt(iy[1])+(1*ic) <8) {   
-      iy[1] = parseInt(iy[1])+(1*ic);iy[0] = parseInt(iy[0])+(1*yc);possibles.push(iy[0]+":"+iy[1]);
+function horse(data){
+  for (let i = 0; i < 8; i++) {
+    var iy = data[i];
+    if (parseInt(iy[0]) <12 && parseInt(iy[1]) >-1 && parseInt(iy[0]) >-1 && parseInt(iy[1]) <8) {   
+      possibles.push(iy[0]+":"+iy[1]);
       if(document.getElementById(iy[0]+":"+iy[1]).classList.length != 1 && document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i == nextstep_p[nextstep])[0] || document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){
-        if(document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){document.getElementById(iy[0]+":"+iy[1]).classList.add("attack");}break;}
+        if(document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){document.getElementById(iy[0]+":"+iy[1]).classList.add("attack");}return;}
       document.getElementById(iy[0]+":"+iy[1]).classList.add("possible");
+    }
+  }
+}
+function lepesek(pos,data){
+  for (let index = 0; index < data.length; index++) {    
+    let iy = Object.assign({},pos);let imax = data[index][0];let ic = data[index][1];let yc = data[index][2];
+    for (let i = 0; i < imax; i++) {
+      if (parseInt(iy[0])+(1*yc) <12 && parseInt(iy[1])+(1*ic) >-1 && parseInt(iy[0])+(1*yc) >-1 && parseInt(iy[1])+(1*ic) <8) {   
+        iy[1] = parseInt(iy[1])+(1*ic);iy[0] = parseInt(iy[0])+(1*yc);possibles.push(iy[0]+":"+iy[1]);
+        if(document.getElementById(iy[0]+":"+iy[1]).classList.length != 1 && document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i == nextstep_p[nextstep])[0] || document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){
+          if(document.getElementById(iy[0]+":"+iy[1]).classList[1] == nextstep_p.filter(i => i != nextstep_p[nextstep])[0]){document.getElementById(iy[0]+":"+iy[1]).classList.add("attack");}break;}
+        document.getElementById(iy[0]+":"+iy[1]).classList.add("possible");
+      }
     }
   }
 }
@@ -278,7 +240,7 @@ function general(){
         var div = document.getElementById(i+":"+j);
         let img = document.createElement("img");
         if(i<2){div.classList.add("BLACK");img.src="babuk/BLACK"+table[i][j].name+".png";}
-        else{img.src="babuk/"+table[i][j].name+".png";}
+        else{div.classList.add("WHITE");img.src="babuk/"+table[i][j].name+".png";}
         div.classList.add(table[i][j].name);
         img.classList.add("figures")
         div.appendChild(img);
