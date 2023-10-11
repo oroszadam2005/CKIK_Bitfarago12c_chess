@@ -261,8 +261,11 @@ function d3general(){
   document.getElementById("board").className = "board d3";
 }
 function d2general(){
-  if(document.getElementById('low').classList.contains('QualityButtonsLMegjelen') && document.getElementById('medium').classList.contains('QualityButtonsLMegjelen') && document.getElementById('high').classList.contains('QualityButtonsLMegjelen')){
+  if(document.getElementById('QualityEnable').style.opacity == "1"){
     document.getElementById('QualityEnable').classList.remove("EnableClass");
+    document.getElementById('QualityEnable').style.opacity = "0";
+    document.getElementById('QualityEnable').style.cursor = "pointer";
+    lenyil = 1;
     QualityLenyil();
   }
   document.getElementById("board").className = "board d2";
@@ -467,19 +470,7 @@ function InditasDivEltuntet(){
 }
 
 function Elindit(){
-  document.getElementById("BlackPlayer").classList.remove('WhitePlayerClose');
-  document.getElementById("WhitePlayer").classList.remove('BlackPlayerClose');
-  document.getElementById('ViewSide').style.opacity = "1";
-  document.getElementById('ViewSide').setAttribute('onclick','bal()');
-  document.getElementById('DView').style.opacity = "1";
-  document.getElementById('DView').setAttribute('onclick','d3()');
-  document.getElementById('DView').style.cursor = "pointer";
-  document.getElementById('ViewSide').style.cursor = "pointer";
-  document.getElementById('KorSzamlalo').style.opacity = "1";
-  document.getElementById('QualityEnable').style.opacity = "0";
-  document.getElementById('QualityEnable').style.cursor = "default";
-  document.getElementById('QualityEnable').removeAttribute("onclick");
-  document.getElementById("WhitePlayer").classList.add('WhitePlayerOpen');
+  document.getElementById("BlackPlayer").classList.remove('WhitePlayerClose');document.getElementById("WhitePlayer").classList.remove('BlackPlayerClose');document.getElementById('ViewSide').style.opacity = "1";document.getElementById('ViewSide').setAttribute('onclick','bal()');document.getElementById('DView').style.opacity = "1";document.getElementById('DView').setAttribute('onclick','d3()');document.getElementById('DView').style.cursor = "pointer";document.getElementById('ViewSide').style.cursor = "pointer";document.getElementById('KorSzamlalo').style.opacity = "1";document.getElementById('QualityEnable').style.opacity = "0";document.getElementById('QualityEnable').style.cursor = "default";document.getElementById('QualityEnable').removeAttribute("onclick");document.getElementById("WhitePlayer").classList.add('WhitePlayerOpen');
   IdoKiir('0');
   KorKiir();
   setTimeout(TimerInditas,400);
@@ -495,20 +486,7 @@ function TimerInditas(){
 function JatekVeg(value){
   clearInterval(FeketeLeszamol);
   clearInterval(FeherLeszamol);
-  document.getElementById("BlackPlayer").classList.remove('BlackPlayerOpen');
-  document.getElementById("WhitePlayer").classList.remove('WhitePlayerOpen');
-  document.getElementById("WhitePlayer").classList.add('WhitePlayerClose');
-  document.getElementById("BlackPlayer").classList.add('BlackPlayerClose');
-  document.getElementById('ViewSide').style.opacity = "0";
-  document.getElementById('ViewSide').removeAttribute('onclick');
-  document.getElementById('DView').style.opacity = "0";
-  document.getElementById('DView').removeAttribute('onclick');
-  document.getElementById('DView').style.cursor = "default";
-  document.getElementById('ViewSide').style.cursor = "default";
-  document.getElementById('KorSzamlalo').style.opacity = "0";
-  document.getElementById('QualityEnable').style.opacity = "0";
-  document.getElementById('QualityEnable').style.cursor = "default";
-  document.getElementById('QualityEnable').removeAttribute("onclick");
+  document.getElementById("BlackPlayer").classList.remove('BlackPlayerOpen');document.getElementById("WhitePlayer").classList.remove('WhitePlayerOpen');document.getElementById("WhitePlayer").classList.add('WhitePlayerClose');document.getElementById("BlackPlayer").classList.add('BlackPlayerClose');document.getElementById('ViewSide').style.opacity = "0";document.getElementById('ViewSide').removeAttribute('onclick');document.getElementById('DView').style.opacity = "0";document.getElementById('DView').removeAttribute('onclick');document.getElementById('DView').style.cursor = "default";document.getElementById('ViewSide').style.cursor = "default";document.getElementById('KorSzamlalo').style.opacity = "0";document.getElementById('QualityEnable').style.opacity = "0";document.getElementById('QualityEnable').style.cursor = "default";document.getElementById('QualityEnable').removeAttribute("onclick");
   if(value == '0' || value == '1'){
     document.getElementById('Jategveg').style.opacity = "1";
     document.getElementById('Jategveg').style.zIndex = "10";
@@ -516,18 +494,8 @@ function JatekVeg(value){
 }
 
 function Restart(){
-  document.getElementById('Jategveg').style.opacity = "0";
-  document.getElementById('Jategveg').style.zIndex = "-1";
   ido = 0;
-  document.getElementById('Ido').checked = false;
-  document.getElementById("IdoAddPerc").style.opacity = "0";
-  document.getElementById("IdoAdMasodPerc").style.opacity = "0";
-  document.getElementById("IdoAddPercLabel").style.opacity = "0";
-  document.getElementById("IdoAdMasodPercLabel").style.opacity = "0";
-  document.getElementById("IdoAddPerc").value = "0";
-  document.getElementById("IdoAdMasodPerc").value = "1";
-  document.getElementById('WhiteTimer').innerHTML = "";
-  document.getElementById('BlackTimer').innerHTML = "";
+  document.getElementById('Jategveg').style.opacity = "0";document.getElementById('Jategveg').style.zIndex = "-1";document.getElementById('Ido').checked = false;document.getElementById("IdoAddPerc").style.opacity = "0";document.getElementById("IdoAdMasodPerc").style.opacity = "0";document.getElementById("IdoAddPercLabel").style.opacity = "0";document.getElementById("IdoAdMasodPercLabel").style.opacity = "0";document.getElementById("IdoAddPerc").value = "0";document.getElementById("IdoAdMasodPerc").value = "1";document.getElementById('WhiteTimer').innerHTML = "";document.getElementById('BlackTimer').innerHTML = "";
   kor = 1;
   CurrentKor = 0;
   LepesekList = [];

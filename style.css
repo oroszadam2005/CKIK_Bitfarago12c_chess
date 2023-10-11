@@ -715,7 +715,7 @@ display: none;
     background-color: rgba(0, 0, 0, 0.6);
     width: 10vw;
     height: 2.5vw;
-    position: fixed;
+    position: absolute;
     top: 1%;
     left: 50%;
     transform: translate(-50%, 0);
@@ -838,7 +838,7 @@ display: none;
     padding: .3vw;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    transition: .1s;
+    transition: .3s;
     opacity: 0;
 }
 
@@ -852,6 +852,7 @@ display: none;
     border: 2px solid white !important;
     color: white !important;
     letter-spacing: 0.2em !important;
+    transition: .3s;
 }
 
 .QualityButtons input{
@@ -893,7 +894,7 @@ display: none;
     border: 2px solid white;
     height: 22vw;
     width: 18vw;
-    position: fixed !important;
+    position: absolute !important;
     margin-left: -19vw;
     border-top-right-radius: .4vw;
     border-bottom-right-radius: .4vw;
@@ -905,7 +906,7 @@ display: none;
     border: 2px solid black;
     height: 22vw;
     width: 18vw;
-    position: fixed !important;
+    position: absolute !important;
     right: 0;
     margin-right: -19vw;
     border-top-left-radius: .4vw;
