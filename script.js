@@ -1,6 +1,8 @@
 var nextstep = 1;
 var nextstep_p = ["BLACK","WHITE"]
 var point = [0,0]
+var duplalepes = [true,true];
+var joker = [true,true];
 function apply(v1){
   var prefix = ["--x","--y","--z","--tx","--ty","--tz","--p","--s"]
   var prefix2 = ["deg","deg","deg","px","px","px","px",""]
@@ -92,6 +94,7 @@ function d3(){
   document.getElementById('ViewSide').disabled = false;
   document.getElementById('DView').classList.add('EnableClass');
   document.getElementById('DView').setAttribute("onclick","d2()");
+  document.getElementById("DView").value = "2D";
   if(document.getElementById('ViewSide').value == "jobb"){
     jobb();
   }
@@ -105,7 +108,8 @@ function d2(){
   document.getElementById('ViewSide').disabled = true;
   document.getElementById('DView').classList.remove('EnableClass');
   document.getElementById('DView').setAttribute("onclick","d3()");
-  apply([0,0,0,0,-180,0,3705,0.6]);
+  document.getElementById("DView").value = "3D";
+  apply([0,0,0,0,-100,0,3705,0.6]);
   d2general();
 
 }
@@ -136,6 +140,31 @@ function Click(){
     Lepes();
   }
 }
+var duplalepesa = false;
+function duplalepesf(c){
+  console.log(1);
+  if(duplalepes[c] && duplalepesa != true){
+    duplalepesa =  true;
+    document.getElementById("dupla"+c).style.borderColor ="gold";
+  }else if(duplalepes[c]){
+    duplalepesa = false;
+    document.getElementById("dupla"+c).style.borderColor ="lime";
+  }
+}
+var jokerl = false;
+var pnumber;
+function jokerlepes(num){
+  var button = document.getElementById("joker"+num);
+
+  if(joker[num] && jokerl !=true){
+    jokerl = true;
+    button.style.border = "2px solid gold"
+    pnumber = num;
+  }else if(joker[num]){
+    jokerl = false
+    button.style.border = "2px solid lime"
+  }
+}
 function Lepes(){
   lasthover.classList = selected.classList;
   selected.classList = "piece";
@@ -155,14 +184,17 @@ function Lepes(){
     document.getElementById(possibles[i]).classList.remove("possible");
     document.getElementById(possibles[i]).classList.remove("attack");
   }
-  if (nextstep == 0) {
+  if (nextstep == 0 && !duplalepesa) {
     nextstep = 1;
-    //fehér
     LepesKinyil('feher');
-  }else{
+  }else if(!duplalepesa){
     nextstep = 0;
-    //fekete
     LepesKinyil('fekete');
+  }
+  if(duplalepesa){
+    duplalepes[nextstep] = false;
+    duplalepesa = false;
+    document.getElementById("dupla"+nextstep).style.borderColor ="red";
   }
   if (iy2[0] == 11 || iy2[0] == 0) {
     if(lasthover.classList.contains("forditva")){
@@ -170,6 +202,11 @@ function Lepes(){
     }else{
       lasthover.classList.add("forditva");
     }
+  }
+  if(jokerl){
+    jokerl = false;
+    joker[pnumber] = false;
+    document.getElementById("joker"+pnumber).style.border = "2px solid red"
   }
   selected = null;
   possibles = [];
@@ -185,7 +222,27 @@ function Possiblesteps(){
   }
   var iy = selected.id.split(':');
   var type = selected.classList[2];
-  if (type == "PAWN") {
+  if(jokerl){
+    lepesek(0,12,1,selected.id.split(':'),0,-1);
+    lepesek(0,8,1,selected.id.split(':'),-1,0);
+    lepesek(0,8,1,selected.id.split(':'),0,1);
+    lepesek(0,12,1,selected.id.split(':'),1,0);
+    lepesek(0,8,1,selected.id.split(':'),1,1);
+    lepesek(0,8,1,selected.id.split(':'),-1,-1);
+    lepesek(0,8,1,selected.id.split(':'),1,-1);
+    lepesek(0,8,1,selected.id.split(':'),-1,1);
+
+    iy = selected.id.split(':');
+    horse([parseInt(iy[0])+2,parseInt(iy[1])+1]);
+    horse([parseInt(iy[0])+2,parseInt(iy[1])-1]);
+    horse([parseInt(iy[0])+1,parseInt(iy[1])+2]);
+    horse([parseInt(iy[0])-1,parseInt(iy[1])+2]);
+
+    horse([parseInt(iy[0])-2,parseInt(iy[1])+1]);
+    horse([parseInt(iy[0])-2,parseInt(iy[1])-1]);
+    horse([parseInt(iy[0])+1,parseInt(iy[1])-2]);
+    horse([parseInt(iy[0])-1,parseInt(iy[1])-2]);
+    }else if (type == "PAWN") {
     for (let i = 0; i < 3; i++) {
       if (parseInt(iy[0])-1 >-1 && selected.classList[1] == "WHITE" && !selected.classList.contains("forditva") || selected.classList[1] == "BLACK" && selected.classList.contains("forditva")) {iy[0] = parseInt(iy[0])-1;
       }else if(parseInt(iy[0])+1 <12){iy[0] = parseInt(iy[0])+1;}
@@ -214,8 +271,8 @@ function Possiblesteps(){
   }else if(type == "QUEEN"){
     lepesek(0,12,1,selected.id.split(':'),0,-1);
     lepesek(0,8,1,selected.id.split(':'),-1,0);
-    lepesek(0,8,1,selected.id.split(':'),0,1);
-    lepesek(0,12,1,selected.id.split(':'),1,0);
+    lepesek(0,12,1,selected.id.split(':'),0,1);
+    lepesek(0,8,1,selected.id.split(':'),1,0);
     lepesek(0,8,1,selected.id.split(':'),1,1);
     lepesek(0,8,1,selected.id.split(':'),-1,-1);
     lepesek(0,8,1,selected.id.split(':'),1,-1);
@@ -236,7 +293,6 @@ function Possiblesteps(){
     horse([parseInt(iy[0])+2,parseInt(iy[1])-1]);
     horse([parseInt(iy[0])+1,parseInt(iy[1])+2]);
     horse([parseInt(iy[0])-1,parseInt(iy[1])+2]);
-
     horse([parseInt(iy[0])-2,parseInt(iy[1])+1]);
     horse([parseInt(iy[0])-2,parseInt(iy[1])-1]);
     horse([parseInt(iy[0])+1,parseInt(iy[1])-2]);
@@ -261,7 +317,6 @@ function lepesek(imin,imax,dir,iy,ic,yc){
     }
   }
 }
-
 function d3general(){
   document.getElementById('QualityEnable').style.opacity = "1";
   document.getElementById('QualityEnable').style.cursor = "pointer";
@@ -280,7 +335,6 @@ function d3general(){
     }
   }
 }
-
 function d2general(){
   document.getElementById('QualityEnable').style.opacity = "0";
   document.getElementById('QualityEnable').style.cursor = "default";
@@ -309,7 +363,7 @@ function d2general(){
   }
 }
 window.addEventListener('load', function(){
-  setTimeout(function(){apply([0,0,0,0,-150,0,3705,0.6])},1000)
+  setTimeout(function(){apply([0,0,0,0,-100,0,3705,0.6])},500)
   setTimeout(function(){d2general(),Mouse()},1000)
 });
 var lasthover = document.body;
@@ -331,13 +385,11 @@ function Mouse(){
         element.classList.add("hover");
       }
     }
-    console.log(element);
     setTimeout(function(){Mouse()},0)
   }, {passive: true,once: true})
 }
 
 var ido = 0;
-
 function IdoEnable(){ 
   if(ido == 0){
     document.getElementById("IdoAddPerc").style.opacity = "1";
@@ -368,7 +420,7 @@ function QualityLenyil(){
     document.getElementById('low').classList.add("QualityButtonsLenyil");
     document.getElementById('medium').classList.add("QualityButtonsLenyil");
     document.getElementById('high').classList.add("QualityButtonsLenyil");
-    setTimeout(GombokMegjelen,500);
+    setTimeout(GombokMegjelen,100);
     document.getElementById(Quality).classList.add("CurrentQuality");
   }
   else{
@@ -377,7 +429,7 @@ function QualityLenyil(){
     document.getElementById('medium').classList.remove("QualityButtonsLMegjelen");
     document.getElementById('high').classList.remove("QualityButtonsLMegjelen");
     document.getElementById('QualityEnable').style.cursor = "default";
-    setTimeout(GombokEltuntet,500);
+    setTimeout(GombokEltuntet,100);
   }
 }
 
