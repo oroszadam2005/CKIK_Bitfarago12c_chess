@@ -1,117 +1,47 @@
-var nextstep = 1;
-var nextstep_p = ["BLACK","WHITE"]
-var point = [0,0]
-var duplalepes = [true,true];
-var joker = [true,true];
+var nextstep = 1;var nextstep_p = ["BLACK","WHITE"];var point = [0,0];
+var duplalepes = [true,true];var joker = [true,true];
 function apply(v1){
-  var prefix = ["--x","--y","--z","--tx","--ty","--tz","--p","--s"]
-  var prefix2 = ["deg","deg","deg","px","px","px","px",""]
-  for (let index = 0; index < 8; index++) {
-    document.documentElement.style.setProperty(prefix[index], v1[index]+prefix2[index]);
-  }
+  var prefix = ["--x","--y","--z","--tx","--ty","--tz","--p","--s"];var prefix2 = ["deg","deg","deg","px","px","px","px",""];for (let index = 0; index < 8; index++) {document.documentElement.style.setProperty(prefix[index], v1[index]+prefix2[index]);}
 }
-var piece =
-[
-{name:"QUEEN",point:5,
-color:"BLACK",
+var piece =[
+{name:"QUEEN",point:5,color:"BLACK",
 code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="piece-head"><div class="reusable-trapezoid"><div class="trapesides trapeside1"></div><div class="trapesides trapeside2"></div><div class="trapesides trapeside3"></div><div class="trapesides trapeside4"></div><div class="trapesides trapeside5"></div></div></div><div class="reusable-rect piece-diamond"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-hood"><div class="sides side1"></div> <div class="sides side2"></div></div>',
-img: "babuk/fekkiralyno.png"},
-
-
-{name:"KING",point:2,
-color:"BLACK",
+},
+{name:"KING",point:2,color:"BLACK",
 code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div></div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="piece-head"><div class="reusable-trapezoid"><div class="trapesides trapeside1"></div><div class="trapesides trapeside2"></div><div class="trapesides trapeside3"></div><div class="trapesides trapeside4"></div><div class="trapesides trapeside5"></div></div></div><div class="reusable-rect piece-diamond"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-hood"> <div class="sides side1"></div> <div class="sides side2"></div> </div>',
-img: "babuk/fekkiraly.png"},
-
-{name:"BISHOP",point:2,
-color:"BLACK",
+},
+{name:"BISHOP",point:2,color:"BLACK",
 code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-head"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="piece-crown"><div class="ccside ccside1"></div><div class="ccside ccside2"></div><div class="ccside ccside3"></div><div class="ccside ccside4"></div></div>',
-img: "babuk/fekbishop.png"},
-
-{name:"HORSE",point:2,
-color:"BLACK",
+},
+{name:"HORSE",point:2,color:"BLACK",
 code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-tilt1"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-tilt2"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-tilt3"> <div class="sides side1"></div><div class="sides side2"></div> </div>',
-img: "babuk/feklovag.png"},
-
-{name:"ROOK",point:3,
-color:"BLACK",
+},
+{name:"ROOK",point:3,color:"BLACK",
 code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-head"><div class="sides side1"></div><div class="sides side2"></div><div class="reusable-rect piece-head-left"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-head-right"> <div class="sides side1"></div><div class="sides side2"></div> </div></div><div class="reusable-rect piece-head-center"> <div class="sides side1"></div><div class="sides side2"></div> </div>',
-img: "babuk/fekfuto.png"},
-
-{name:"PAWN",point:1,
-color:"BLACK",
+},
+{name:"PAWN",point:1,color:"BLACK",
 code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-head"> <div class="sides side1"></div><div class="sides side2"></div> </div>',
-img: "babuk/fekgyalog.png"}
-
-]
-var piece2 =
-[
-{name:"QUEEN",point:5,
-color:"WHITE",
-code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="piece-head"><div class="reusable-trapezoid"><div class="trapesides trapeside1"></div><div class="trapesides trapeside2"></div><div class="trapesides trapeside3"></div><div class="trapesides trapeside4"></div><div class="trapesides trapeside5"></div></div></div><div class="reusable-rect piece-diamond"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-hood"><div class="sides side1"></div> <div class="sides side2"></div></div>',
-img: "babuk/feherkiralyno.png"},
-
-{name:"KING",point:2,
-color:"WHITE",
-code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div></div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="piece-head"><div class="reusable-trapezoid"><div class="trapesides trapeside1"></div><div class="trapesides trapeside2"></div><div class="trapesides trapeside3"></div><div class="trapesides trapeside4"></div><div class="trapesides trapeside5"></div></div></div><div class="reusable-rect piece-diamond"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-hood"> <div class="sides side1"></div> <div class="sides side2"></div> </div>',
-img: "babuk/fehkiraly.png"},
-
-{name:"BISHOP",point:2,
-color:"WHITE",
-code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-head"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="piece-crown"><div class="ccside ccside1"></div><div class="ccside ccside2"></div><div class="ccside ccside3"></div><div class="ccside ccside4"></div></div>',
-img: "babuk/fehbishop.png"},
-
-{name:"HORSE",point:2,
-color:"WHITE",
-code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-tilt1"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-tilt2"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-tilt3"> <div class="sides side1"></div><div class="sides side2"></div> </div>',
-img: "babuk/fehlovag.png"},
-
-{name:"ROOK",point:3,
-color:"WHITE",
-code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-head"><div class="sides side1"></div><div class="sides side2"></div><div class="reusable-rect piece-head-left"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-head-right"> <div class="sides side1"></div><div class="sides side2"></div> </div></div><div class="reusable-rect piece-head-center"> <div class="sides side1"></div><div class="sides side2"></div> </div>',
-img: "babuk/fehfuto.png"},
-
-{name:"PAWN",point:1,
-color:"WHITE",
-code:'<div class="reusable-rect piece-base"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-upbase"> <div class="sides side1"></div><div class="sides side2"></div> </div><div class="reusable-rect piece-thick"> <div class="sides side1"></div> <div class="sides side2"></div> </div><div class="reusable-rect piece-head"> <div class="sides side1"></div><div class="sides side2"></div> </div>',
-img: "babuk/fehgyalog.png"}
-]
+}];
 var table = [[piece[4],piece[3],piece[2],piece[1],piece[0],piece[2],piece[3],piece[4]],
 [piece[5],piece[5],piece[5],piece[5],piece[5],piece[5],piece[5],piece[5]],
-[,,,,,,,],
-[,,,,,,,],
-[,,,,,,,],
-[,,,,,,,],
-[,,,,,,,],
-[,,,,,,,],
-[,,,,,,,],
-[,,,,,,,],
-[piece2[5],piece2[5],piece2[5],piece2[5],piece2[5],piece2[5],piece2[5],piece2[5]],
-[piece2[4],piece2[3],piece2[2],piece2[1],piece2[0],piece2[2],piece2[3],piece2[4]]
+[,,,,,,,],[,,,,,,,],[,,,,,,,],[,,,,,,,],[,,,,,,,],[,,,,,,,],[,,,,,,,],[,,,,,,,],
+[piece[5],piece[5],piece[5],piece[5],piece[5],piece[5],piece[5],piece[5]],
+[piece[4],piece[3],piece[2],piece[1],piece[0],piece[2],piece[3],piece[4]]
 ];
-
 function d3(){
   document.getElementById('ViewSide').disabled = false;
   document.getElementById('DView').classList.add('EnableClass');
   document.getElementById('DView').setAttribute("onclick","d2()");
   document.getElementById("DView").value = "2D";
-  if(document.getElementById('ViewSide').value == "jobb"){
-    jobb();
-  }
-  else{
-    bal();
-  }
-  apply([45,0,-30,0,0,215,3705,0.6]);
-  d3general();
+  document.getElementById('ViewSide').value == "jobb"
+  bal();setTimeout(function(){d3general();},2000);
 }
 function d2(){
   document.getElementById('ViewSide').disabled = true;
   document.getElementById('DView').classList.remove('EnableClass');
   document.getElementById('DView').setAttribute("onclick","d3()");
   document.getElementById("DView").value = "3D";
-  apply([0,0,0,0,-100,0,3705,0.6]);
-  d2general();
-
+  apply([0,0,0,0,-100,0,3705,0.6]);d2general();
 }
 function jobb(){
   document.getElementById('ViewSide').value = "bal";
@@ -123,8 +53,7 @@ function bal(){
   document.getElementById('ViewSide').setAttribute("onclick","jobb()");
   apply([45,0,-30,0,0,215,3705,0.6]);
 }
-var selected;
-var lastselected = document.body;
+var selected;var lastselected = document.body;
 function Click(){
   if (lasthover.classList.contains(nextstep_p[nextstep])) {    
     lastselected.classList.remove("selected");
@@ -155,7 +84,6 @@ var jokerl = false;
 var pnumber;
 function jokerlepes(num){
   var button = document.getElementById("joker"+num);
-
   if(joker[num] && jokerl !=true){
     jokerl = true;
     button.style.border = "2px solid gold"
@@ -206,7 +134,7 @@ function Lepes(){
   if(jokerl){
     jokerl = false;
     joker[pnumber] = false;
-    document.getElementById("joker"+pnumber).style.border = "2px solid red"
+    document.getElementById("joker"+pnumber).style.borderColor = "red"
   }
   selected = null;
   possibles = [];
@@ -231,13 +159,11 @@ function Possiblesteps(){
     lepesek(0,8,1,selected.id.split(':'),-1,-1);
     lepesek(0,8,1,selected.id.split(':'),1,-1);
     lepesek(0,8,1,selected.id.split(':'),-1,1);
-
     iy = selected.id.split(':');
     horse([parseInt(iy[0])+2,parseInt(iy[1])+1]);
     horse([parseInt(iy[0])+2,parseInt(iy[1])-1]);
     horse([parseInt(iy[0])+1,parseInt(iy[1])+2]);
     horse([parseInt(iy[0])-1,parseInt(iy[1])+2]);
-
     horse([parseInt(iy[0])-2,parseInt(iy[1])+1]);
     horse([parseInt(iy[0])-2,parseInt(iy[1])-1]);
     horse([parseInt(iy[0])+1,parseInt(iy[1])-2]);
@@ -321,57 +247,47 @@ function d3general(){
   document.getElementById('QualityEnable').style.opacity = "1";
   document.getElementById('QualityEnable').style.cursor = "pointer";
   document.getElementById('QualityEnable').setAttribute("onclick","QualityLenyil()");
-  var board = document.getElementById("board");
-  board.innerHTML="";
-  for (let i = 0; i < 12; i++) {
-    for (let j = 0; j < 8; j++) {
-      board.innerHTML+= `<div class="piece" id="${i}:${j}" style="--v:${i};--h:${j};"></div>`;
-      if (table[i][j] != undefined) {        
-        var div = document.getElementById(i+":"+j);
-        div.innerHTML+=table[i][j].code;
-        div.classList.add(table[i][j].color);
-        div.classList.add(table[i][j].name);
-      }
-    }
-  }
+  document.getElementById("board").className = "board d3";
 }
 function d2general(){
   document.getElementById('QualityEnable').style.opacity = "0";
   document.getElementById('QualityEnable').style.cursor = "default";
   document.getElementById('QualityEnable').removeAttribute("onclick");
   document.getElementById("WhitePlayer").classList.add('WhitePlayerOpen');
-  if(document.getElementById('low').classList.contains('QualityButtonsLMegjelen') && document.getElementById('medium').classList.contains('QualityButtonsLMegjelen') && 
-  document.getElementById('high').classList.contains('QualityButtonsLMegjelen')){
+  if(document.getElementById('low').classList.contains('QualityButtonsLMegjelen') && document.getElementById('medium').classList.contains('QualityButtonsLMegjelen') && document.getElementById('high').classList.contains('QualityButtonsLMegjelen')){
     document.getElementById('QualityEnable').classList.remove("EnableClass");
     QualityLenyil();
   }
-  var board = document.getElementById("board");
-  board.innerHTML="";
+  document.getElementById("board").className = "board d2";
+}
+function general(){
   for (let i = 0; i < 12; i++) {
     for (let j = 0; j < 8; j++) {
       board.innerHTML+= `<div onclick="Click()" class="piece" id="${i}:${j}" style="--v:${i};--h:${j};"></div>`;
       if (table[i][j] != undefined) {        
         var div = document.getElementById(i+":"+j);
-        div.classList.add(table[i][j].color);
-        div.classList.add(table[i][j].name);
         let img = document.createElement("img");
-        img.src=table[i][j].img;
+        if(i<2){div.classList.add("BLACK");img.src="babuk/BLACK"+table[i][j].name+".png";}
+        else{img.src="babuk/"+table[i][j].name+".png";}
+        div.classList.add(table[i][j].name);
         img.classList.add("figures")
         div.appendChild(img);
+        div.innerHTML+=table[i][j].code;
       }
     }
   }
 }
 window.addEventListener('load', function(){
-  setTimeout(function(){apply([0,0,0,0,-100,0,3705,0.6])},500)
-  setTimeout(function(){d2general(),Mouse()},1000)
+  apply([0,0,0,0,-100,0,3705,0.6]);
+  general();
+  setTimeout(function(){Mouse()},1000)
 });
 var lasthover = document.body;
 document.getElementById("main").addEventListener("click",Click)
 function Mouse(){
   document.getElementById("board").addEventListener('mousemove', e => {
     var element = document.elementFromPoint(e.clientX, e.clientY).closest('.piece');
-    if (element != null) {
+    if (element != null && element != lasthover) {
       lasthover.classList.remove("hover");
       if (element != null) {
         lasthover = element;
@@ -386,9 +302,8 @@ function Mouse(){
       }
     }
     setTimeout(function(){Mouse()},0)
-  }, {passive: true,once: true})
+  }, {once: true})
 }
-
 var ido = 0;
 function IdoEnable(){ 
   if(ido == 0){
@@ -406,13 +321,10 @@ function IdoEnable(){
     ido = 0;
   }
 }
-
 function KorokSzamaFV(div){
   document.getElementById('KorokSzama').innerHTML = "<p>"+div.value+"</p>";
 }
-
-var Quality = "low";
-var lenyil = 0;
+var Quality = "low";var lenyil = 0;
 function QualityLenyil(){
   if(lenyil == 0){
     lenyil = 1;
@@ -432,20 +344,17 @@ function QualityLenyil(){
     setTimeout(GombokEltuntet,100);
   }
 }
-
 function GombokMegjelen(){
   document.getElementById('low').classList.add("QualityButtonsLMegjelen");
   document.getElementById('medium').classList.add("QualityButtonsLMegjelen");
   document.getElementById('high').classList.add("QualityButtonsLMegjelen");
 }
-
 function GombokEltuntet(){
   document.getElementById('low').classList.remove("QualityButtonsLenyil");
   document.getElementById('medium').classList.remove("QualityButtonsLenyil");
   document.getElementById('high').classList.remove("QualityButtonsLenyil");
   document.getElementById('QualityEnable').classList.remove("EnableClass");
 }
-
 function qualityc(value){
   document.getElementById("main").classList = "main-elements "+value;
   Quality = value;
@@ -454,7 +363,6 @@ function qualityc(value){
   document.getElementById('high').classList.remove("CurrentQuality");
   document.getElementById(Quality).classList.add("CurrentQuality");
 };
-
 function LepesKinyil(value){
   if(value == 'feher'){
     document.getElementById("BlackPlayer").classList.remove('BlackPlayerOpen');
