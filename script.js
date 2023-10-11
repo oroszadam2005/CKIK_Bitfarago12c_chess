@@ -1,7 +1,6 @@
 var nextstep = 1;
 var nextstep_p = ["BLACK","WHITE"]
 var point = [0,0]
-var joker = [true,true];
 function apply(v1){
   var prefix = ["--x","--y","--z","--tx","--ty","--tz","--p","--s"]
   var prefix2 = ["deg","deg","deg","px","px","px","px",""]
@@ -172,11 +171,6 @@ function Lepes(){
       lasthover.classList.add("forditva");
     }
   }
-  if(jokerl){
-    jokerl = false;
-    joker[pnumber] = false;
-    document.getElementById("joker"+pnumber).style.border = "2px solid red"
-  }
   selected = null;
   possibles = [];
 }
@@ -191,27 +185,7 @@ function Possiblesteps(){
   }
   var iy = selected.id.split(':');
   var type = selected.classList[2];
-  if(jokerl){
-    lepesek(0,12,1,selected.id.split(':'),0,-1);
-    lepesek(0,8,1,selected.id.split(':'),-1,0);
-    lepesek(0,8,1,selected.id.split(':'),0,1);
-    lepesek(0,12,1,selected.id.split(':'),1,0);
-    lepesek(0,8,1,selected.id.split(':'),1,1);
-    lepesek(0,8,1,selected.id.split(':'),-1,-1);
-    lepesek(0,8,1,selected.id.split(':'),1,-1);
-    lepesek(0,8,1,selected.id.split(':'),-1,1);
-
-    iy = selected.id.split(':');
-    horse([parseInt(iy[0])+2,parseInt(iy[1])+1]);
-    horse([parseInt(iy[0])+2,parseInt(iy[1])-1]);
-    horse([parseInt(iy[0])+1,parseInt(iy[1])+2]);
-    horse([parseInt(iy[0])-1,parseInt(iy[1])+2]);
-
-    horse([parseInt(iy[0])-2,parseInt(iy[1])+1]);
-    horse([parseInt(iy[0])-2,parseInt(iy[1])-1]);
-    horse([parseInt(iy[0])+1,parseInt(iy[1])-2]);
-    horse([parseInt(iy[0])-1,parseInt(iy[1])-2]);
-    }else if (type == "PAWN") {
+  if (type == "PAWN") {
     for (let i = 0; i < 3; i++) {
       if (parseInt(iy[0])-1 >-1 && selected.classList[1] == "WHITE" && !selected.classList.contains("forditva") || selected.classList[1] == "BLACK" && selected.classList.contains("forditva")) {iy[0] = parseInt(iy[0])-1;
       }else if(parseInt(iy[0])+1 <12){iy[0] = parseInt(iy[0])+1;}
@@ -269,21 +243,6 @@ function Possiblesteps(){
     horse([parseInt(iy[0])-1,parseInt(iy[1])-2]);
   }
 }
-var jokerl = false;
-var pnumber;
-function jokerlepes(num){
-  var button = document.getElementById("joker"+num);
-  
-  if(joker[num] && jokerl !=true){
-    jokerl = true;
-    button.style.border = "2px solid gold"
-    pnumber = num;
-  }else if(joker[num]){
-    jokerl = false
-    button.style.border = "2px solid lime"
-  }
-}
-
 function horse(iy){
   if (parseInt(iy[0]) <12 && parseInt(iy[1]) >-1 && parseInt(iy[0]) >-1 && parseInt(iy[1]) <8) {   
     possibles.push(iy[0]+":"+iy[1]);
