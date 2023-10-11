@@ -823,6 +823,7 @@ display: none;
     top:10px;
     right:10px;
     margin: auto;
+    z-index: 10;
 }
 
 #QualityEnable{

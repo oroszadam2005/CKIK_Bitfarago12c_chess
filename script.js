@@ -67,6 +67,9 @@ function Click(){
     var iy2 = lasthover.id.split(":");
     point[nextstep]+=table[iy2[0]][iy2[1]].point;
     Lepes();
+    if (point.includes(29)) {
+      JatekVeg(nextstep_p.filter(i => i != nextstep));
+    }
   }
 }
 var duplalepesa = false;
@@ -223,6 +226,7 @@ function KorokSzamaFV(div){
 }
 var Quality = "low";var lenyil = 0;
 function QualityLenyil(){
+  console.log(111);
   if(lenyil == 0){lenyil = 1;document.getElementById('QualityEnable').classList.add("EnableClass");document.getElementById('low').classList.add("QualityButtonsLenyil");document.getElementById('medium').classList.add("QualityButtonsLenyil");document.getElementById('high').classList.add("QualityButtonsLenyil");setTimeout(GombokMegjelen,500);document.getElementById(Quality).classList.add("CurrentQuality");}
   else{lenyil = 0;document.getElementById('low').classList.remove("QualityButtonsLMegjelen");document.getElementById('medium').classList.remove("QualityButtonsLMegjelen");document.getElementById('high').classList.remove("QualityButtonsLMegjelen");document.getElementById('QualityEnable').style.cursor = "default";setTimeout(GombokEltuntet,500);}
 }
@@ -272,7 +276,7 @@ function InditasDivEltuntet(){
   document.getElementById('StarterDiv').style.zIndex = "-1";
 }
 function Elindit(){
-  document.getElementById("BlackPlayer").classList.remove('WhitePlayerClose');document.getElementById("WhitePlayer").classList.remove('BlackPlayerClose');document.getElementById('ViewSide').style.opacity = "1";document.getElementById('ViewSide').setAttribute('onclick','bal()');document.getElementById('DView').style.opacity = "1";document.getElementById('DView').setAttribute('onclick','d3()');document.getElementById('DView').style.cursor = "pointer";document.getElementById('ViewSide').style.cursor = "pointer";document.getElementById('KorSzamlalo').style.opacity = "1";document.getElementById('QualityEnable').style.opacity = "0";document.getElementById('QualityEnable').style.cursor = "default";document.getElementById('QualityEnable').removeAttribute("onclick");document.getElementById("WhitePlayer").classList.add('WhitePlayerOpen');
+  document.getElementById('ViewSide').disabled = true;document.getElementById("BlackPlayer").classList.remove('WhitePlayerClose');document.getElementById("WhitePlayer").classList.remove('BlackPlayerClose');document.getElementById('ViewSide').style.opacity = "1";document.getElementById('ViewSide').setAttribute('onclick','bal()');document.getElementById('DView').style.opacity = "1";document.getElementById('DView').setAttribute('onclick','d3()');document.getElementById('DView').style.cursor = "pointer";document.getElementById('ViewSide').style.cursor = "pointer";document.getElementById('KorSzamlalo').style.opacity = "1";document.getElementById('QualityEnable').style.opacity = "0";document.getElementById('QualityEnable').style.cursor = "default";document.getElementById('QualityEnable').removeAttribute("onclick");document.getElementById("WhitePlayer").classList.add('WhitePlayerOpen');
   IdoKiir('0');KorKiir();setTimeout(TimerInditas,400);
 }
 function TimerInditas(){
@@ -281,22 +285,21 @@ function TimerInditas(){
 function JatekVeg(value){
   clearInterval(FeketeLeszamol);clearInterval(FeherLeszamol);
   document.getElementById("BlackPlayer").classList.remove('BlackPlayerOpen');document.getElementById("WhitePlayer").classList.remove('WhitePlayerOpen');document.getElementById("WhitePlayer").classList.add('WhitePlayerClose');document.getElementById("BlackPlayer").classList.add('BlackPlayerClose');document.getElementById('ViewSide').style.opacity = "0";document.getElementById('ViewSide').removeAttribute('onclick');document.getElementById('DView').style.opacity = "0";document.getElementById('DView').removeAttribute('onclick');document.getElementById('DView').style.cursor = "default";document.getElementById('ViewSide').style.cursor = "default";document.getElementById('KorSzamlalo').style.opacity = "0";document.getElementById('QualityEnable').style.opacity = "0";document.getElementById('QualityEnable').style.cursor = "default";document.getElementById('QualityEnable').removeAttribute("onclick");
+  document.getElementById('Jategveg').style.opacity = "1";document.getElementById('Jategveg').style.zIndex = "10";
   if(value == '0' || value == '1'){
-    document.getElementById('Jategveg').style.opacity = "1";document.getElementById('Jategveg').style.zIndex = "10";
-    if(value == "0"){document.getElementById('JatekVegDiv').innerHTML = "<h1>A Fekete játékos nyert</h1>";
-    }else{document.getElementById('JatekVegDiv').innerHTML = "<h1>A Fehér játékos nyert</h1>";}
-  }else if("Letelt"){
-    if(point[0] > point[1]){document.getElementById('JatekVegDiv').innerHTML = "<h1>A Fekete játékos nyert</h1>";
-    }else{document.getElementById('JatekVegDiv').innerHTML = "<h1>A Fehér játékos nyert</h1>";}
+    if(value == "0"){document.getElementById('JatekVegDiv').innerHTML = "<h1>A Fekete játékos nyert!</h1>";
+    }else{document.getElementById('JatekVegDiv').innerHTML = "<h1>A Fehér játékos nyert!</h1>";}
+  }else if('Letelt'){
+    if(point[0] > point[1]){document.getElementById('JatekVegDiv').innerHTML = "<h1>A Fekete játékos nyert!</h1>";
+    }else if(point[0] < point[1]){document.getElementById('JatekVegDiv').innerHTML = "<h1>A Fehér játékos nyert!</h1>";}
+    else{
+      document.getElementById('JatekVegDiv').innerHTML = "<h1>Döntetlen!</h1>";
+    }
   }
 }
 function Restart(){
   ido = 0;document.getElementById('Jategveg').style.opacity = "0";document.getElementById('Jategveg').style.zIndex = "-1";document.getElementById('Ido').checked = false;document.getElementById("IdoAddPerc").style.opacity = "0";document.getElementById("IdoAdMasodPerc").style.opacity = "0";document.getElementById("IdoAddPercLabel").style.opacity = "0";document.getElementById("IdoAdMasodPercLabel").style.opacity = "0";document.getElementById("IdoAddPerc").value = "0";document.getElementById("IdoAdMasodPerc").value = "1";document.getElementById('WhiteTimer').innerHTML = "";document.getElementById('BlackTimer').innerHTML = "";kor = 1;CurrentKor = 0;LepesekList = [];lenyil = 0;nextstep = 1;point = [0,0];setTimeout(Ujraindit,400);
 }
 function Ujraindit(){
-  document.getElementById('StarterDiv').style.opacity = "1";document.getElementById('StarterDiv').style.zIndex = "10";
-  let Idik = ['WarningSignh1','WarningSignh3','KorokLabel','KorokAdd','Ido','IdoLabel','Inditas'];
-  Idik.forEach(elem => {
-    document.getElementById(elem).style.opacity = "1";
-  });
+  location.reload();
 }
